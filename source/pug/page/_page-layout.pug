@@ -1,0 +1,30 @@
+include ../global/_global-constants.pug
+include ../global/_global-mixins.pug
+
+block variables
+  -
+    let logoHref = currentPage === "index" ? false : "./index.html";
+    const pDescription = pageDescription ? pageDescription : "Deep Forest music fansite";
+    const pTitle = pageTitle ? pageTitle : "Deep Forest music fansite";
+
+doctype html
+html.page(lang="ru", dir="ltr")
+  head
+    block head
+      meta(charset="utf-8")
+      meta(name="viewport", content="width=device-width, initial-scale=1")
+      meta(name="description", content=pDescription)
+      title= pTitle
+      link(rel="stylesheet", href="./css/style-min.css")
+      link(rel="preload", as="font", type="font/woff2", href="./fonts/evolventa-regular.woff2", crossorigin)
+
+  body.page__body
+
+    //- include page-header.pug
+
+    block main
+
+    //- include page-footer.pug
+
+    //- block scripts
+    //-   script(src="./js/scripts.bundle.js")
