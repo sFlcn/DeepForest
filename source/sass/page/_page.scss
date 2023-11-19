@@ -1,0 +1,22 @@
+.page {
+  height: 100%;
+  scroll-behavior: smooth;
+
+  @include font-primary;
+}
+
+.page__body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  min-width: $mobile-width;
+  margin: 0;
+  padding: 0;
+  color: $palette-brightcontrast;
+  background-color: $palette-back;
+  text-transform: none;
+}
+
+.wrapper {
+  @include wrapper;
+}

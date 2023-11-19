@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "Evolventa";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src:
+    local('Evolventa Regular'),
+    local('Evolventa-Regular'),
+    local('Evolventa'),
+    url("../fonts/evolventa-regular.woff2") format("woff2"),
+    url("../fonts/evolventa-regular.woff") format("woff"),
+    url('../fonts/evolventa-regular.otf') format("opentype");
+}
+
+@font-face {
+  font-family: "Evolventa";
+  font-weight: 400;
+  font-style: oblique;
+  font-display: swap;
+  src:
+    local('Evolventa Oblique'),
+    local('Evolventa-Oblique'),
+    url("../fonts/evolventa-oblique.woff.woff2") format("woff2"),
+    url("../fonts/evolventa-oblique.woff.woff") format("woff"),
+    url('../fonts/evolventa-oblique.woff.otf') format("opentype");
+}
+
+@font-face {
+  font-family: "Gilroy";
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src:
+    local('Gilroy ExtraBold'),
+    local('Gilroy-ExtraBold'),
+    url("../fonts/gilroyextrabold.woff2") format("woff2"),
+    url("../fonts/gilroyextrabold.woff") format("woff"),
+    url('../fonts/gilroyextrabold.otf') format("opentype");
+}
+
+@font-face {
+  font-family: "Citrica Cyrillic";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src:
+    local('Citrica Cyrillic'),
+    url("../fonts/citricacyrillic.woff2") format("woff2"),
+    url("../fonts/citricacyrillic.woff") format("woff"),
+    url('../fonts/citricacyrillic.otf') format("opentype");
+}

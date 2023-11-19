@@ -1,0 +1,59 @@
+@mixin font-primary($size: 16px, $line-height: 120%, $weight: 400, $color: inherit) {
+  font-family: "Evolventa", "Helvetica", "Arial", sans-serif;
+  font-style: normal;
+  font-size: $size;
+  line-height: $line-height;
+  font-weight: $weight;
+  color: $color;
+}
+
+@mixin font-title($size: 20px, $line-height: 120%, $weight: 800, $color: inherit) {
+  font-family: "Gilroy", "Arial", "Helvetica", sans-serif;
+  font-style: normal;
+  font-size: $size;
+  line-height: $line-height;
+  font-weight: $weight;
+  color: $color;
+
+  @media (min-width: $small-desktop-width) {
+    font-size: math.ceil($size * 1.8);
+  }
+}
+
+@mixin font-album($size: 40px, $line-height: 90%, $weight: 400, $color: inherit) {
+  font-family: "Citrica Cyrillic", "Trebuchet MS", sans-serif;
+  font-style: normal;
+  font-size: $size;
+  line-height: $line-height;
+  font-weight: $weight;
+  color: $color;
+}
+
+@mixin list() {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin wrapper {
+  margin: auto;
+  padding: 0 10px;
+
+  &--ext {
+    padding: 0;
+  }
+
+  @media (min-width: $tablet-width) {
+    padding: 0 5%;
+  }
+
+  @media (min-width: $small-desktop-width) {
+    max-width: $small-desktop-content;
+    padding: 0;
+  }
+
+  @media (min-width: $desktop-width) {
+    max-width: $desktop-content;
+    padding: 0;
+  }
+}
