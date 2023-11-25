@@ -20,9 +20,22 @@
   src:
     local('Evolventa Oblique'),
     local('Evolventa-Oblique'),
-    url("../fonts/evolventa-oblique.woff.woff2") format("woff2"),
-    url("../fonts/evolventa-oblique.woff.woff") format("woff"),
-    url('../fonts/evolventa-oblique.woff.otf') format("opentype");
+    url("../fonts/evolventa-oblique.woff2") format("woff2"),
+    url("../fonts/evolventa-oblique.woff") format("woff"),
+    url('../fonts/evolventa-oblique.otf') format("opentype");
+}
+
+@font-face {
+  font-family: "Evolventa";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src:
+    local('Evolventa Bold'),
+    local('Evolventa-Bold'),
+    url("../fonts/evolventa-bold.woff2") format("woff2"),
+    url("../fonts/evolventa-bold.woff") format("woff"),
+    url('../fonts/evolventa-bold.otf') format("opentype");
 }
 
 @font-face {
