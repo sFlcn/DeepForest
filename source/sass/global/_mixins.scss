@@ -34,26 +34,3 @@
   padding: 0;
   list-style: none;
 }
-
-@mixin wrapper {
-  margin: auto;
-  padding: 0 10px;
-
-  &--ext {
-    padding: 0;
-  }
-
-  @media (min-width: $tablet-width) {
-    padding: 0 5%;
-  }
-
-  @media (min-width: $small-desktop-width) {
-    max-width: $small-desktop-content;
-    padding: 0;
-  }
-
-  @media (min-width: $desktop-width) {
-    max-width: $desktop-content;
-    padding: 0;
-  }
-}

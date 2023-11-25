@@ -17,6 +17,32 @@
   text-transform: none;
 }
 
+@mixin wrapper-adaptive {
+  @media (min-width: $tablet-width) {
+    padding: 0 5%;
+  }
+
+  @media (min-width: $small-desktop-width) {
+    max-width: $small-desktop-content;
+    padding: 0;
+  }
+
+  @media (min-width: $desktop-width) {
+    max-width: $desktop-content;
+    padding: 0;
+  }
+}
+
 .wrapper {
-  @include wrapper;
+  margin: auto;
+  padding: 0 10px;
+  
+  @include wrapper-adaptive;
+}
+
+.wrapper--ext {
+  margin: auto;
+  padding: 0;
+
+  @include wrapper-adaptive;
 }
