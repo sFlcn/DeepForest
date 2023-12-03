@@ -1,0 +1,31 @@
+.history__begining {
+  padding: 32px 0 10px;
+
+  @media (min-width: $small-desktop-width) {
+    padding: 102px 0 0;
+  }
+}
+
+.history__mini-title {
+  text-transform: uppercase;
+
+  @include font-primary($line-height: 150%);
+
+  color: $palette-accent;
+}
+
+.history__inset {
+  @include font-title;
+
+  @media (min-width: $small-desktop-width) {
+    font-size: 24px;
+  }
+}
+
+.history__text {
+  @include font-primary;
+}
+
+.history__large-text {
+  @include font-title;
+}

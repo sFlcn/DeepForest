@@ -1,5 +1,4 @@
 // Global
-
 @use 'sass:math';
 @import "global/fonts";
 @import "global/variables";
@@ -7,10 +6,11 @@
 @import "global/global";
 
 // Blocks
-
 @import "page/page";
+@import "blocks/history";
 
 // header
+@import "page/page-header";
 
 // main
 

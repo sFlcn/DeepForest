@@ -18,10 +18,6 @@
 }
 
 @mixin wrapper-adaptive {
-  @media (min-width: $tablet-width) {
-    padding: 0 5%;
-  }
-
   @media (min-width: $small-desktop-width) {
     max-width: $small-desktop-content;
     padding: 0;
