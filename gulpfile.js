@@ -30,7 +30,8 @@ const paths = {
     dest: 'build/js/',
   },
   images: {
-    src: 'source/assets/img-2jpg-n-webp/*.png',
+    srcX2: 'source/assets/img-2jpg+webp-x2/*.png',
+    srcX3: 'source/assets/img-2jpg+webp-x3/*.png',
     srcLoseless: 'source/assets/img-loseless/*.png',
     dest: 'build/img',
   },
@@ -99,14 +100,14 @@ const copyResources = (done) => {
 };
 
 const images = (done) => {
-  gulp.src(paths.images.src)
+  gulp.src(paths.images.srcX2)
     .pipe(sharpResponsive({
       formats: [
         {
           format: 'jpeg',
           rename: { suffix: '@1x' },
           jpegOptions: { progressive: true },
-          width: (metadata) => metadata.width * 0.5,
+          width: (metadata) => metadata.width / 2,
         },
         {
           format: 'jpeg',
@@ -117,7 +118,7 @@ const images = (done) => {
           format: 'webp',
           rename: { suffix: '@1x' },
           webpOptions: { lossless: false },
-          width: (metadata) => metadata.width * 0.5,
+          width: (metadata) => metadata.width / 2,
         },
         {
           format: 'webp',
@@ -127,10 +128,50 @@ const images = (done) => {
       ],
     }))
     .pipe(gulp.dest(paths.images.dest));
+  gulp.src(paths.images.srcX3)
+    .pipe(sharpResponsive({
+      formats: [
+        {
+          format: 'jpeg',
+          rename: { suffix: '@1x' },
+          jpegOptions: { progressive: true },
+          width: (metadata) => metadata.width / 3,
+        },
+        {
+          format: 'jpeg',
+          rename: { suffix: '@2x' },
+          jpegOptions: { progressive: true },
+          width: (metadata) => metadata.width / 3 * 2,
+        },
+        {
+          format: 'jpeg',
+          jpegOptions: { progressive: true },
+          rename: { suffix: '@3x' },
+        },
+        {
+          format: 'webp',
+          rename: { suffix: '@1x' },
+          webpOptions: { lossless: false },
+          width: (metadata) => metadata.width / 3,
+        },
+        {
+          format: 'webp',
+          rename: { suffix: '@2x' },
+          webpOptions: { lossless: false },
+          width: (metadata) => metadata.width / 3 * 2,
+        },
+        {
+          format: 'webp',
+          rename: { suffix: '@3x' },
+          webpOptions: { lossless: false },
+        },
+      ],
+    }))
+    .pipe(gulp.dest(paths.images.dest));
   gulp.src(paths.images.srcLoseless)
     .pipe(sharpResponsive({
       formats: [
-        { format: 'png', rename: { suffix: '@1x' }, width: (metadata) => metadata.width * 0.5 },
+        { format: 'png', rename: { suffix: '@1x' }, width: (metadata) => metadata.width / 0.5 },
         { format: 'png', rename: { suffix: '@2x' } },
         {
           format: 'webp',
