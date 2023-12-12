@@ -1,5 +1,6 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
+import fs from 'fs';
 import sync from 'browser-sync';
 import { deleteAsync } from 'del';
 import rename from 'gulp-rename';
@@ -19,6 +20,7 @@ const paths = {
     watch: 'source/pug/**/*.pug',
     dest: 'build/',
   },
+  data: 'source/data/data.json',
   styles: {
     src: 'source/sass/style.scss',
     watch: 'source/sass/**/*.scss',
@@ -54,7 +56,7 @@ const cleanDirs = async () => { await deleteAsync(['build']); };
 const pug = (done) => {
   gulp.src(paths.pug.src)
     .pipe(plumber())
-    .pipe(gulppug())
+    .pipe(gulppug({ locals: JSON.parse(fs.readFileSync(paths.data)) }))
     .pipe(gulp.dest(paths.pug.dest))
     .pipe(sync.stream());
   done();
@@ -198,7 +200,7 @@ const reload = (done) => {
 const watcher = () => {
   gulp.watch(paths.styles.watch, gulp.series(styles));
   // gulp.watch(paths.scripts.watch, gulp.series(scripts));
-  gulp.watch(paths.pug.watch, gulp.series(pug, reload));
+  gulp.watch([paths.pug.watch, paths.data], gulp.series(pug, reload));
 };
 
 const server = (done) => {
