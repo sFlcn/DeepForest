@@ -544,3 +544,146 @@ $dfr-part: $dfr - 256px;
     @media (min-width: $desktop-width) {margin-top: 37px}
   }
 }
+
+// -------------------------- пятая часть --------------------------
+.history__chapter:nth-of-type(5) {
+  & p:nth-of-type(1) {
+    @media (min-width: $small-desktop-width) {
+      width: 433px;
+      margin-top: 100px;
+    }
+
+    @media (min-width: $desktop-width) {margin-top: 150px}
+
+    @include fullrow;
+    @include margin-1-fr;
+  }
+
+  & p:nth-of-type(2) {
+    @media (min-width: $small-desktop-width) {
+      width: 263px;
+      margin-bottom: 100px;
+    }
+
+    @media (min-width: $desktop-width) {
+      width: 253px;
+      margin-bottom: 150px;
+    }
+
+    @include fullrow;
+    @include margin-1p-fr;
+  }
+
+  & .history__image:nth-of-type(1) {
+    @include fullrow;
+    @include margin-1-fr;
+  }
+}
+
+// -------------------------- шестая часть --------------------------
+.history__chapter:nth-of-type(6) {
+  & p:nth-of-type(1) {
+    @media (min-width: $small-desktop-width) {width: 280px}
+  }
+
+  & .history__image:nth-of-type(1) {
+    @media (min-width: $small-desktop-width) {margin-bottom: 0}
+
+    @include twothirdsrow;
+  }
+
+  & .history__image:nth-of-type(2) {
+    @media (min-width: $small-desktop-width) {
+      min-width: 880px;
+      margin-top: 100px;
+      margin-bottom: 100px;
+    }
+
+    @include twothirdsrow;
+  }
+
+  & .history__image:nth-of-type(4) {
+    @media (min-width: $small-desktop-width) {margin-bottom: 100px}
+
+    @include fullrow;
+    @include margin-1-fr;
+  }
+}
+
+// ------------------------- седьмая часть -------------------------
+.history__chapter:nth-of-type(7) {
+  & p:nth-of-type(1) {
+    @media (min-width: $small-desktop-width) {width: 280px}
+  }
+
+  & p:nth-of-type(2) {
+    @media (min-width: $small-desktop-width) {width: 405px}
+
+    @media (min-width: $desktop-width) {width: 433px}
+
+    @include fullrow;
+    @include margin-1-fr;
+  }
+
+  & p:nth-of-type(3) {
+    @media (min-width: $small-desktop-width) {width: 215px}
+
+    @media (min-width: $desktop-width) {width: 256px}
+
+    @include fullrow;
+    @include margin-1p-fr;
+  }
+
+  & p:nth-of-type(4) {
+    @media (min-width: $small-desktop-width) {margin-top: 65px}
+  }
+
+  & .history__image:nth-of-type(1) {
+    @include twothirdsrow;
+  }
+
+  & .history__image:nth-of-type(2) {
+    @media (min-width: $small-desktop-width) {
+      margin-top: 90px;
+      margin-bottom: 0;
+    }
+  }
+
+  & .history__image:nth-of-type(4) {
+    @media (min-width: $small-desktop-width) {margin-bottom: 100px}
+
+    @include fullrow;
+    @include margin-1-fr;
+  }
+}
+
+// ------------------------- восьмая часть -------------------------
+.history__chapter:nth-of-type(8) {
+  & p:nth-of-type(1) {
+    @media (min-width: $small-desktop-width) {width: 435px}
+  }
+
+  & p:nth-of-type(2) {
+    @media (min-width: $small-desktop-width) {
+      align-self: end;
+      width: 238px;
+      margin-bottom: 60px;
+    }
+    
+    @media (min-width: $desktop-width) {width: 256px}
+
+    @include twothirdsrow;
+    @include margin-part-fr;
+  }
+
+  & p:nth-of-type(3) {
+    @media (min-width: $small-desktop-width) {width: 433px}
+
+    @include fullrow;
+    @include margin-1-fr;
+  }
+
+  &:last-child {
+    @media (min-width: $small-desktop-width) {margin-bottom: 150px}
+  }
+}
