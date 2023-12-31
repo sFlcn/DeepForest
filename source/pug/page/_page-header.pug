@@ -27,7 +27,7 @@ mixin siteNavItem({ name, pageHref, navSubPages }, mode, index)
 header.header
   .header__slider
     .header__slide
-      +pictureAdaptiveJpgWebpShort("slide-1", 442, 255, "фоновое изображение")
+      +pictureAdaptiveJpgWebpShort({filename: "slide-1", altText: "фоновое изображение"})
   .wrapper--ext
     //- слайдер
     nav.header__nav

@@ -16,7 +16,7 @@ mixin pictureAdaptiveJpgWebp({filename, width, height, altText, cssClass, lazy=f
     source(media=`(min-width: ${breakpoints[1]}px)`, srcset= `./img/${filename}-sd@1x.jpeg 1x, ./img/${filename}-sd@2x.jpeg 2x`)
     img(class= cssClass, src= `./img/${filename}-m@1x.jpeg`, srcset=`./img/${filename}-m@2x.jpeg 2x, ./img/${filename}-m@3x.jpeg 3x`, width= width, height= height, alt= altText, loading= lazy)
 
-mixin pictureAdaptiveJpgWebpShort(filename, width, height, altText, cssClass, lazy)
+mixin pictureAdaptiveJpgWebpShort({filename, width, height, altText, cssClass, lazy=false})
   picture
     source(media=`(min-width: ${breakpoints[1]}px)`, type="image/webp", srcset= `./img/${filename}@1x.webp 1x,./img/${filename}@2x.webp 2x`)
     source(type="image/webp", srcset= `./img/${filename}-m@1x.webp 1x, ./img/${filename}-m@2x.webp 2x, ./img/${filename}-m@3x.webp 3x`)
