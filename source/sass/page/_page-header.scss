@@ -16,6 +16,7 @@
   left: 0;
   z-index: -1;
   background: no-repeat url("../img/header-bottom-glow-m.jpg");
+  animation: 11s linear infinite apparition;
 
   @media (min-width: $small-desktop-width) {
     width: 858px;
