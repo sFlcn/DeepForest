@@ -23,15 +23,16 @@ block main
     }
 
   main.main
-    section.wrapper--ext.history
-      h1.visuallyhidden История группы Deep Forest.
-      each chapter in historyTextStrucure
-        .history__chapter
-          each item in chapter
-            if item.heading
-              h2.visuallyhidden= item.heading
-            if item.text
-              p(class= item.class)= item.text
-            if item.image
-              .history__image(class= item.class)
-                +pictureAdaptiveJpgWebp({filename: item.image, altText: item.altText})
+    section.history
+      .wrapper--ext
+        h1.visuallyhidden История группы Deep Forest.
+        each chapter in historyTextStrucure
+          .history__chapter
+            each item in chapter
+              if item.heading
+                h2.visuallyhidden= item.heading
+              if item.text
+                p(class= item.class)= item.text
+              if item.image
+                .history__image(class= item.class)
+                  +pictureAdaptiveJpgWebp({filename: item.image, altText: item.altText})

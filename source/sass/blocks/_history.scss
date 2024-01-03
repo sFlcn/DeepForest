@@ -1,8 +1,8 @@
 .history {
-  padding-top: 38px;
+  padding-top: 35px;
   overflow: hidden;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: $small-desktop-width) {
     position: relative;
 
     &::before {
@@ -11,12 +11,12 @@
       width: 1766px;
       height: 1845px;
       top: 20px;
-      right: -50px;
+      right: 50%;
+      transform: translateX(50%);
       z-index: -5;
       background: no-repeat url("../img/history-top-glow-d.jpg");
+      animation: 7s linear infinite apparition;
     }
-
-    @include b-scale;
   }
 
   @media (min-width: $small-desktop-width) {
@@ -60,7 +60,8 @@ $dfr-part: $dfr - 256px;
 }
 
 .history__image {
-  margin: 0 auto 35px;
+  margin: 0 auto 40px;
+  max-width: max-content;
 
   @media (min-width: $small-desktop-width) {
     margin: 0 0 50px;
@@ -79,7 +80,7 @@ $dfr-part: $dfr - 256px;
 
 .history__chapter p {
   margin-top: 0;
-  margin-bottom: 35px;
+  margin-bottom: 38px;
 
   @include font-primary;
 
@@ -126,7 +127,7 @@ $dfr-part: $dfr - 256px;
   }
 }
 
-@mixin glow($filename, $size-m, $size-d, $prop1: top, $pos1-m: 0, $pos1-d: 0, $prop2: left, $pos2-m: 0, $pos2-d: 0) {
+@mixin glow($size-m, $size-d, $prop1: top, $pos1-m: 0, $pos1-d: 0, $prop2: left, $pos2-m: 0, $pos2-d: 0, $filename, $filename-d: #{$filename}) {
   position: relative;
 
   &::before {
@@ -136,16 +137,14 @@ $dfr-part: $dfr - 256px;
     width: #{$size-m}px;
     height: #{$size-m}px;
     background: no-repeat url("../img/#{$filename}.png");
-    background-size: cover;
+    background-size: contain;
     #{$prop1}: #{$pos1-m}px;
     #{$prop2}: #{$pos2-m}px;
-  }
 
-  @media (min-width: $small-desktop-width) {
-    &::before {
+    @media (min-width: $small-desktop-width) {
       width: #{$size-d}px;
       height: #{$size-d}px;
-      background-image: url("../img/#{$filename}.png");
+      background-image: url("../img/#{$filename-d}.png");
       #{$prop1}: #{$pos1-d}px;
       #{$prop2}: #{$pos2-d}px;
     }
@@ -255,7 +254,7 @@ $dfr-part: $dfr - 256px;
       margin-bottom: 0;
     }
 
-    @include glow("ellipse4", 415, 1100, top, -125, -350, right, -85, -480);
+    @include glow(415, 1100, top, -125, -350, right, -85, -480, "ellipse4");
     @include b-spin;
   }
 
@@ -273,7 +272,7 @@ $dfr-part: $dfr - 256px;
 
     @include fullrow;
     @include margin-1p-fr;
-    @include glow("ellipse15", 530, 844, top, -180, -250, left, -100, -20);
+    @include glow(530, 844, top, -180, -250, left, -100, -20, "ellipse15");
     @include b-spin;
   }
 }
@@ -286,7 +285,7 @@ $dfr-part: $dfr - 256px;
       margin-bottom: 100px;
     }
 
-    @include glow("ellipse5", 412, 998, top, -105, -200, right, -70, -230);
+    @include glow(412, 998, top, -105, -200, right, -70, -230, "ellipse5");
     @include b-scale;
   }
 
@@ -378,7 +377,7 @@ $dfr-part: $dfr - 256px;
       grid-column: span 3;
       width: 433px;
       margin-left: calc($sdfr + $sdgap);
-      margin-bottom: 90px;
+      margin-bottom: 100px;
     }
 
     @media (min-width: $desktop-width) {
@@ -413,13 +412,15 @@ $dfr-part: $dfr - 256px;
   & p:nth-of-type(9) {
     @media (min-width: $small-desktop-width) {min-width: 237px}
 
+    @media (min-width: $desktop-width) {margin-bottom: 90px}
+
     @include margin-part-fr;
   }
 
   & p:nth-of-type(10) {
     @media (min-width: $small-desktop-width) {
       width: 217px;
-      margin-bottom: 105px;
+      margin-bottom: 100px;
     }
 
     @media (min-width: $desktop-width) {width: 237px}
@@ -438,10 +439,8 @@ $dfr-part: $dfr - 256px;
   & p:nth-of-type(12) {
     @media (min-width: $small-desktop-width) {
       min-width: 224px;
-      margin-bottom: 115px;
+      margin-bottom: 100px;
     }
-
-    @media (min-width: $desktop-width) {margin-bottom: 120px}
 
     @include twothirdsrow;
     @include margin-1p-fr;
@@ -466,6 +465,9 @@ $dfr-part: $dfr - 256px;
     }
 
     @media (min-width: $desktop-width) {margin-bottom: 150px}
+    
+    @include glow(383, 882, top, -110, -165, left, -90, -280, "ellipse18");
+    @include b-scale;
   }
 
   & .history__image:nth-of-type(2) {
@@ -473,11 +475,13 @@ $dfr-part: $dfr - 256px;
       grid-row-start: 2;
       grid-column-start: 3;
       margin-top: 200px;
+      margin-bottom: 30px;
     }
 
-    @media (min-width: $desktop-width) {
-      margin-top: 145px;
-    }
+    @media (min-width: $desktop-width) {margin-top: 145px}
+    
+    @include glow(756, 806, top, -260, -295, left, -190, -240, "ellipse13");
+    @include b-spin;
   }
 
   & .history__image:nth-of-type(3) {
@@ -486,15 +490,18 @@ $dfr-part: $dfr - 256px;
       grid-row: 4 / span 2;
       margin: 0;
     }
+    
+    @include glow(378, 1138, top, -140, -230, left, 50, -260, "ellipse7");
+    @include b-scale;
   }
 
   & .history__image:nth-of-type(4) {
     @media (min-width: $small-desktop-width) {
       grid-row: span 2;
-      margin: 57px 0 0;
+      margin: 5px 0 50px;
     }
 
-    @media (min-width: $desktop-width) {margin-top: 132px}
+    @media (min-width: $desktop-width) {margin-top: 100px}
 
     @include twothirdsrow;
     @include margin-1-fr;
@@ -511,6 +518,9 @@ $dfr-part: $dfr - 256px;
       grid-column-start: 3;
       grid-row: 8 / span 2;
     }
+    
+    @include glow(856, 1023, top, -245, -155, left, -190, -165, "ellipse6", "ellipse6-d");
+    @include b-spin;
   }
 
   & .history__image:nth-of-type(7) {
@@ -520,12 +530,17 @@ $dfr-part: $dfr - 256px;
     }
 
     @media (min-width: $desktop-width) {margin-top: 207px}
+    
+    @include glow(660, 985, top, -210, -230, left, -120, -330, "ellipse12");
+    @include b-scale;
   }
 
   & .history__image:nth-of-type(8) {
     @media (min-width: $desktop-width) {margin-left: 40px}
 
     @include fullrow;
+    @include glow(512, 737, top, -150, -185, left, -110, -95, "ellipse17", "ellipse17-d");
+    @include b-spin;
   }
 }
 
@@ -548,7 +563,7 @@ $dfr-part: $dfr - 256px;
 
     @media (min-width: $desktop-width) {
       width: 255px;
-      margin-bottom: 70px
+      margin-bottom: 50px
     }
 
     @include fullrow;
@@ -570,18 +585,14 @@ $dfr-part: $dfr - 256px;
   & p:nth-of-type(4) {
     @media (min-width: $small-desktop-width) {
       width: 433px;
-      margin-bottom: 96px;
+      margin-bottom: 0;
     }
-
-    @media (min-width: $desktop-width) {margin-bottom: 0}
 
     @include twothirdsrow;
   }
 
   & .history__image:nth-of-type(1) {
-    @media (min-width: $small-desktop-width) {margin-bottom: 83px}
-
-    @media (min-width: $desktop-width) {margin-bottom: 50px}
+    @media (min-width: $small-desktop-width) {margin-bottom: 50px}
 
     @include fullrow;
     @include margin-1p-fr;
@@ -592,11 +603,11 @@ $dfr-part: $dfr - 256px;
       grid-column-start: 1;
       grid-row: 4 / span 2;
       justify-self: end;
-      margin-top: 86px;
       margin-bottom: 0;
     }
 
-    @media (min-width: $desktop-width) {margin-top: 37px}
+    @include glow(780, 780, top, -200, -195, left, -160, -305, "ellipse8");
+    @include b-spin;
   }
 }
 
@@ -605,10 +616,8 @@ $dfr-part: $dfr - 256px;
   & p:nth-of-type(1) {
     @media (min-width: $small-desktop-width) {
       width: 433px;
-      margin-top: 100px;
+      margin-top: 150px;
     }
-
-    @media (min-width: $desktop-width) {margin-top: 150px}
 
     @include fullrow;
     @include margin-1-fr;
@@ -617,13 +626,10 @@ $dfr-part: $dfr - 256px;
   & p:nth-of-type(2) {
     @media (min-width: $small-desktop-width) {
       width: 263px;
-      margin-bottom: 100px;
-    }
-
-    @media (min-width: $desktop-width) {
-      width: 253px;
       margin-bottom: 150px;
     }
+
+    @media (min-width: $desktop-width) {width: 253px}
 
     @include fullrow;
     @include margin-1p-fr;
@@ -642,7 +648,10 @@ $dfr-part: $dfr - 256px;
   }
 
   & p:nth-of-type(2) {
-    @media (min-width: $small-desktop-width) {width: 405px}
+    @media (min-width: $small-desktop-width) {
+      width: 405px;
+      margin-bottom: 40px;
+    }
 
     @media (min-width: $desktop-width) {width: 433px}
 
@@ -651,7 +660,10 @@ $dfr-part: $dfr - 256px;
   }
 
   & p:nth-of-type(3) {
-    @media (min-width: $small-desktop-width) {width: 215px}
+    @media (min-width: $small-desktop-width) {
+      width: 215px;
+      margin-bottom: 30px;
+    }
 
     @media (min-width: $desktop-width) {width: 256px}
 
@@ -669,13 +681,21 @@ $dfr-part: $dfr - 256px;
 
   & .history__image:nth-of-type(2) {
     @media (min-width: $small-desktop-width) {
-      margin-top: 90px;
-      margin-bottom: 0;
+      margin-top: 65px;
+      margin-bottom: 50px;
     }
+
+    @include glow(699, 895, top, -225, -330, left, -155, -225, "ellipse11");
+    @include b-scale(7s);
+  }
+
+  & .history__image:nth-of-type(3) {
+    @include glow(425, 733, bottom, -280, -330, right, 135, -225, "ellipse52", "ellipse52-d");
+    @include b-scale;
   }
 
   & .history__image:nth-of-type(4) {
-    @media (min-width: $small-desktop-width) {margin-bottom: 100px}
+    @media (min-width: $small-desktop-width) {margin-bottom: 150px}
 
     @include fullrow;
     @include margin-1-fr;
@@ -685,14 +705,20 @@ $dfr-part: $dfr - 256px;
 // ------------------------- седьмая часть -------------------------
 .history__chapter:nth-of-type(7) {
   & p:nth-of-type(1) {
-    @media (min-width: $small-desktop-width) {width: 435px}
+    @media (min-width: $small-desktop-width) {
+      width: 435px;
+      margin-bottom: 40px;
+    }
+
+    @include glow(643, 1012, top, -60, -355, left, 10, -630, "ellipse19", "ellipse19-d");
+    @include b-scale(9s);
   }
 
   & p:nth-of-type(2) {
     @media (min-width: $small-desktop-width) {
       align-self: end;
       width: 238px;
-      margin-bottom: 60px;
+      margin-bottom: 50px;
     }
     
     @media (min-width: $desktop-width) {width: 256px}
@@ -702,14 +728,13 @@ $dfr-part: $dfr - 256px;
   }
 
   & p:nth-of-type(3) {
-    @media (min-width: $small-desktop-width) {width: 433px}
+    @media (min-width: $small-desktop-width) {
+      width: 433px;
+      margin-bottom: 150px;
+    }
 
     @include fullrow;
     @include margin-1-fr;
-  }
-
-  &:last-child {
-    @media (min-width: $small-desktop-width) {margin-bottom: 150px}
   }
 }
 
@@ -740,5 +765,7 @@ $dfr-part: $dfr - 256px;
 
     @include fullrow;
     @include margin-1-fr;
+    @include glow(486, 1202, bottom, -5, -190, left, -75, -205, "ellipse10");
+    @include b-scale(3s);
   }
 }
