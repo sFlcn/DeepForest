@@ -7,29 +7,6 @@
   }
 }
 
-.header::after {
-  content: "";
-  position: absolute;
-  width: 219px;
-  height: 106px;
-  top: 246px;
-  left: 0;
-  z-index: -1;
-  background: no-repeat url("../img/header-bottom-glow-m.jpg");
-  animation: 11s linear infinite apparition;
-
-  @media (min-width: $small-desktop-width) {
-    width: 858px;
-    height: 845px;
-    top: 460px;
-    left: 50%;
-    transform: translateX(-1260px);
-    z-index: 0;
-    background-image: url("../img/header-bottom-glow-d.png");
-    mix-blend-mode: color-dodge;
-  }
-}
-
 .header__slider {
   position: absolute;
   width: 100%;

@@ -1,26 +1,72 @@
 .history {
-  padding-top: 35px;
+  position: relative;
+  padding-top: 25px;
   overflow: hidden;
 
   @media (min-width: $small-desktop-width) {
-    position: relative;
+    padding-top: 50px;
+  }
+}
 
-    &::before {
-      content: "";
-      position: absolute;
-      width: 1766px;
-      height: 1845px;
-      top: 20px;
-      right: 50%;
-      transform: translateX(50%);
-      z-index: -5;
-      background: no-repeat url("../img/history-top-glow-d.jpg");
-      animation: 7s linear infinite apparition;
-    }
+.history::before {
+  content: "";
+  position: absolute;
+  width: 276px;
+  height: 95px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-81%);
+  z-index: -1;
+  background: no-repeat url("../img/heading-backlight-m.jpg");
+  animation: 3s linear infinite apparition;
+
+  @media (min-width: $small-desktop-width) {
+    width: 969px;
+    height: 333px;
+    top: 42px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url("../img/heading-backlight-d.jpg");
+  }
+}
+
+.history::after {
+  @media (min-width: $small-desktop-width) {
+    content: "";
+    position: absolute;
+    width: 1766px;
+    height: 1845px;
+    top: 335px;
+    right: 50%;
+    transform: translateX(56.5%);
+    z-index: -5;
+    background: no-repeat url("../img/history-top-glow-d.jpg");
+    animation: 7s linear infinite apparition;
+  }
+}
+
+.history__heading {
+  margin: 0 20px 50px;
+  padding: 15px;
+  letter-spacing: 0.48px;
+  border: {
+    style: solid none;
+    color: $palette-dim;
+    width: 0.5px;
+  }
+  text-transform: uppercase;
+  text-align: center;
+  cursor: default;
+
+  @include font-primary(24px);
+
+  @media (min-width: $tablet-width) {
+    margin: 0 12.5% 50px;
   }
 
   @media (min-width: $small-desktop-width) {
-  padding-top: 100px;
+    padding: 47px;
+    margin: 0 0 150px;
   }
 }
 
@@ -80,7 +126,7 @@ $dfr-part: $dfr - 256px;
 
 .history__chapter p {
   margin-top: 0;
-  margin-bottom: 38px;
+  margin-bottom: 40px;
 
   @include font-primary;
 
@@ -237,7 +283,7 @@ $dfr-part: $dfr - 256px;
       margin-bottom: 100px;
     }
 
-    @media (min-width: $desktop-width) {width: 256px}
+    @media (min-width: $desktop-width) {width: 270px}
 
     @include fullrow;
     @include margin-1p-fr;
@@ -245,14 +291,11 @@ $dfr-part: $dfr - 256px;
 
   & .history__image:nth-of-type(1) {
     @media (min-width: $small-desktop-width) {
-      margin-top: 266px;
-      margin-bottom: 15px;
+      margin-top: 140px;
+      margin-bottom: 25px;
     }
 
-    @media (min-width: $desktop-width) {
-      margin-top: 175px;
-      margin-bottom: 0;
-    }
+    @media (min-width: $desktop-width) {margin-bottom: 5px}
 
     @include glow(415, 1100, top, -125, -350, right, -85, -480, "ellipse4");
     @include b-spin;
@@ -267,7 +310,11 @@ $dfr-part: $dfr - 256px;
 
   & .history__image:nth-of-type(3) {
     @media (min-width: $small-desktop-width) {
-      margin-bottom: 0;
+      margin-bottom: 78px;
+    }
+
+    @media (min-width: $desktop-width) {
+      margin-bottom: 31px;
     }
 
     @include fullrow;
@@ -282,7 +329,7 @@ $dfr-part: $dfr - 256px;
   & .history__image:nth-of-type(1) {
     @media (min-width: $small-desktop-width) {
       grid-row: 1 / span 2;
-      margin-bottom: 100px;
+      margin: 0;
     }
 
     @include glow(412, 998, top, -105, -200, right, -70, -230, "ellipse5");
@@ -291,12 +338,12 @@ $dfr-part: $dfr - 256px;
 
   & p:nth-of-type(1) {
     @media (min-width: $small-desktop-width) {
-      align-self: end;
       width: 433px;
-      margin-bottom: 30px;
+      margin-top: 72px;
+      margin-bottom: 0;
     }
 
-    @media (min-width: $desktop-width) {margin-bottom: 50px}
+    @media (min-width: $desktop-width) {margin-top: 119px}
 
     @include twothirdsrow;
   }
@@ -304,19 +351,20 @@ $dfr-part: $dfr - 256px;
   & p:nth-of-type(2) {
     @media (min-width: $small-desktop-width) {
       min-width: 236px;
-      margin-bottom: 0;
+      margin-top: 50px;
+      margin-bottom: 100px;
     }
 
-    @media (min-width: $desktop-width) {
-      min-width: 256px;
-      margin-bottom: 35px;
-    }
+    @media (min-width: $desktop-width) {min-width: 256px}
 
     @include margin-part-fr;
   }
 
   & p:nth-of-type(3) {
-    @media (min-width: $small-desktop-width) {width: 244px}
+    @media (min-width: $small-desktop-width) {
+      width: 244px;
+      margin-top: 50px;
+    }
 
     @media (min-width: $desktop-width) {width: 262px}
   }
@@ -331,7 +379,7 @@ $dfr-part: $dfr - 256px;
   & p:nth-of-type(5) {
     @media (min-width: $small-desktop-width) {
       width: 238px;
-      margin-bottom: 150px;
+      margin-bottom: 100px;
     }
 
     @media (min-width: $desktop-width) {width: 255px}
@@ -377,23 +425,20 @@ $dfr-part: $dfr - 256px;
       grid-column: span 3;
       width: 433px;
       margin-left: calc($sdfr + $sdgap);
-      margin-bottom: 100px;
+      margin-bottom: 150px;
     }
 
     @media (min-width: $desktop-width) {
       grid-column: span 2;
       margin-left: 0;
-      margin-bottom: 150px;
     }
   }
 
   & p:nth-of-type(5) {
     @media (min-width: $small-desktop-width) {
       width: 237px;
-      margin-bottom: 80px;
+      margin-bottom: 100px;
     }
-
-    @media (min-width: $desktop-width) {margin-bottom: 100px}
   }
 
   & p:nth-of-type(7) {
@@ -461,10 +506,8 @@ $dfr-part: $dfr - 256px;
   & .history__image:nth-of-type(1) {
     @media (min-width: $small-desktop-width) {
       grid-column: span 2;
-      margin-bottom: 100px;
+      margin-bottom: 150px;
     }
-
-    @media (min-width: $desktop-width) {margin-bottom: 150px}
     
     @include glow(383, 882, top, -110, -165, left, -90, -280, "ellipse18");
     @include b-scale;
@@ -498,7 +541,7 @@ $dfr-part: $dfr - 256px;
   & .history__image:nth-of-type(4) {
     @media (min-width: $small-desktop-width) {
       grid-row: span 2;
-      margin: 5px 0 50px;
+      margin: 27px 0 100px;
     }
 
     @media (min-width: $desktop-width) {margin-top: 100px}
@@ -526,10 +569,9 @@ $dfr-part: $dfr - 256px;
   & .history__image:nth-of-type(7) {
     @media (min-width: $small-desktop-width) {
       grid-row: span 2;
-      margin-top: 182px;
+      align-self: end;
+      margin-bottom: 100px;
     }
-
-    @media (min-width: $desktop-width) {margin-top: 207px}
     
     @include glow(660, 985, top, -210, -230, left, -120, -330, "ellipse12");
     @include b-scale;
@@ -547,7 +589,10 @@ $dfr-part: $dfr - 256px;
 // ------------------------- четвёртая часть ------------------------
 .history__chapter:nth-of-type(4) {
   & p:nth-of-type(1) {
-    @media (min-width: $small-desktop-width) {width: 418px}
+    @media (min-width: $small-desktop-width) {
+      width: 418px;
+      margin-bottom: 100px;
+    }
 
     @media (min-width: $desktop-width) {width: 433px}
 
@@ -571,13 +616,7 @@ $dfr-part: $dfr - 256px;
   }
 
   & p:nth-of-type(3) {
-    @media (min-width: $small-desktop-width) {
-      width: 433px;
-    }
-
-    @media (min-width: $desktop-width) {
-      margin-bottom: 60px;
-    }
+    @media (min-width: $small-desktop-width) {width: 433px}
 
     @include twothirdsrow;
   }
@@ -650,7 +689,7 @@ $dfr-part: $dfr - 256px;
   & p:nth-of-type(2) {
     @media (min-width: $small-desktop-width) {
       width: 405px;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
 
     @media (min-width: $desktop-width) {width: 433px}
@@ -662,7 +701,7 @@ $dfr-part: $dfr - 256px;
   & p:nth-of-type(3) {
     @media (min-width: $small-desktop-width) {
       width: 215px;
-      margin-bottom: 30px;
+      margin-bottom: 50px;
     }
 
     @media (min-width: $desktop-width) {width: 256px}
@@ -672,7 +711,7 @@ $dfr-part: $dfr - 256px;
   }
 
   & p:nth-of-type(4) {
-    @media (min-width: $small-desktop-width) {margin-top: 65px}
+    @media (min-width: $small-desktop-width) {margin-top: 50px}
   }
 
   & .history__image:nth-of-type(1) {
@@ -681,7 +720,7 @@ $dfr-part: $dfr - 256px;
 
   & .history__image:nth-of-type(2) {
     @media (min-width: $small-desktop-width) {
-      margin-top: 65px;
+      margin-top: 50px;
       margin-bottom: 50px;
     }
 
