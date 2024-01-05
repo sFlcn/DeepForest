@@ -1,0 +1,27 @@
+.socials__list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 9px;
+
+  @include list;
+}
+
+.socials__link {
+  display: block;
+  padding: 15px;
+
+  & svg {
+    transition: transform 0.7s, color 1.1s;
+    transform: perspective(100px);
+  }
+
+  &:hover,
+  &:focus-within {
+    color: $palette-accent;
+
+    & svg {
+      transform: perspective(100px) translate3d(-2px, -5px, 15px);
+    }
+  }
+}
