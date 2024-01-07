@@ -6,7 +6,8 @@ block prepend variables
 
 mixin albumArticle(albumData)
   article.albums__album.album !{albumData.albumMarkup}
-    +picturePngWebp2x({cssClass: "album__cover", filename: `album-${albumData.albumName}`, altText: `Обложка ${albumData.albumName}.`, width: 239, lazy: "lazy" })
+    .album__cover
+      +picturePngWebp2x({filename: `album-${albumData.albumName}`, altText: `Обложка ${albumData.albumName}.`, width: 239, lazy: "lazy" })
 
 block main
   main.main
