@@ -44,5 +44,4 @@ footer.footer
     ul.footer__nav
       each item in footerNav
         +footerNavItem(item)
-    .footer__copyrights
-      include:markdown-it ../../data/copyrights.md
+    .footer__copyrights !{copyrightsData}

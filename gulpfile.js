@@ -11,8 +11,10 @@ import autoprefixer from 'autoprefixer';
 import * as dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 import sharpResponsive from 'gulp-sharp-responsive';
+import markdownit from 'markdown-it';
 
 const sass = gulpSass(dartSass);
+const md = markdownit();
 
 const paths = {
   pug: {
@@ -20,7 +22,7 @@ const paths = {
     watch: 'source/pug/**/*.pug',
     dest: 'build/',
   },
-  data: 'source/data/data.json',
+  data: 'source/data/*',
   styles: {
     src: 'source/sass/style.scss',
     watch: 'source/sass/**/*.scss',
@@ -51,12 +53,20 @@ const paths = {
   },
 };
 
+// External data collect
+const historyData = JSON.parse(fs.readFileSync('source/data/history.json'));
+const copyrightsData = md.render(fs.readFileSync('source/data/copyrights.md', 'utf8'));
+
+const collectedData = {
+  historyData: historyData,
+  copyrightsData: copyrightsData,
+}
 const cleanDirs = async () => { await deleteAsync(['build']); };
 
 const pug = (done) => {
   gulp.src(paths.pug.src)
     .pipe(plumber())
-    .pipe(gulppug({ locals: JSON.parse(fs.readFileSync(paths.data)) }))
+    .pipe(gulppug({ locals: collectedData }))
     .pipe(gulp.dest(paths.pug.dest))
     .pipe(sync.stream());
   done();
