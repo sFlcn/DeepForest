@@ -12,6 +12,7 @@ import * as dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 import sharpResponsive from 'gulp-sharp-responsive';
 import markdownit from 'markdown-it';
+import htmlMinify from 'html-minifier';
 
 const sass = gulpSass(dartSass);
 const md = markdownit();
@@ -55,12 +56,9 @@ const paths = {
 
 // External data collect
 const historyData = JSON.parse(fs.readFileSync('source/data/history.json'));
-const copyrightsData = md.render(fs.readFileSync('source/data/copyrights.md', 'utf8'));
+const copyrightsData = htmlMinify.minify(md.render(fs.readFileSync('source/data/copyrights.md', 'utf8')), {collapseWhitespace: true});
+const collectedData = { historyData, copyrightsData };
 
-const collectedData = {
-  historyData: historyData,
-  copyrightsData: copyrightsData,
-}
 const cleanDirs = async () => { await deleteAsync(['build']); };
 
 const pug = (done) => {
