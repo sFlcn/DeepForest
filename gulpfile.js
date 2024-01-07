@@ -56,8 +56,17 @@ const paths = {
 
 // External data collect
 const historyData = JSON.parse(fs.readFileSync('source/data/history.json'));
+const albumsList = JSON.parse(fs.readFileSync('source/data/albums.json'));
 const copyrightsData = htmlMinify.minify(md.render(fs.readFileSync('source/data/copyrights.md', 'utf8')), {collapseWhitespace: true});
-const collectedData = { historyData, copyrightsData };
+const albumsData = [];
+
+for (let i = 0; i < albumsList.length; i++) {
+  const albumName = albumsList[i].name;
+  const albumMarkup = htmlMinify.minify(md.render(fs.readFileSync(`source/data/${albumName}.md`, 'utf8')), {collapseWhitespace: true});
+  albumsData.push({ albumName, albumMarkup });
+}
+
+const collectedData = { historyData, copyrightsData, albumsData };
 
 const cleanDirs = async () => { await deleteAsync(['build']); };
 
@@ -198,6 +207,7 @@ const images = (done) => {
     }))
     .pipe(gulp.dest(paths.images.dest));
   done();
+  // await Promise.resolve('Images ready!');
 };
 
 const reload = (done) => {

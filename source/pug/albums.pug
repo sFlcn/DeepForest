@@ -1,0 +1,17 @@
+extends page/_page-layout.pug
+
+block prepend variables
+  - const currentPage = PAGES["albums"].pageHref;
+  - const pageTitle = "Альбомы Deep Forest";
+
+mixin albumArticle(albumData)
+  article.albums__album.album !{albumData.albumMarkup}
+    +picturePngWebp2x({cssClass: "album__cover", filename: `album-${albumData.albumName}`, altText: `Обложка ${albumData.albumName}.`, width: 239, lazy: "lazy" })
+
+block main
+  main.main
+    section.albums
+      .wrapper--ext
+        h1.albums__heading Альбомы
+        each item in albumsData
+          +albumArticle(item)
