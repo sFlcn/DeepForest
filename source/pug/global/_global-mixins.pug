@@ -1,13 +1,18 @@
 //- display breakpoints in px
 - const breakpoints = [360, 1400, 1600];
 
-mixin pictureAdaptiveJpg({filename, width, height, altText, cssClass, lazy=false})
+mixin picturePngWebp2x({filename, width, height=width, altText, cssClass, lazy=false})
+  picture
+    source(type="image/webp", srcset= `./img/${filename}@1x.webp 1x,./img/${filename}@2x.webp 2x`)
+    img(class= cssClass, src= `./img/${filename}@1x.png`, srcset=`./img/${filename}@2x.png 2x`, width=width, height=height, alt= altText, loading=lazy)
+
+mixin pictureAdaptiveJpg({filename, width, height=width, altText, cssClass, lazy=false})
   picture
     source(media=`(min-width: ${breakpoints[2]}px)`, srcset= `./img/${filename}-d@1x.jpeg 1x, ./img/${filename}-d@2x.jpeg 2x`)
     source(media=`(min-width: ${breakpoints[1]}px)`, srcset= `./img/${filename}-sd@1x.jpeg 1x, ./img/${filename}-sd@2x.jpeg 2x`)
     img(class= cssClass, src= `./img/${filename}-m@1x.jpeg`, srcset=`./img/${filename}-m@2x.jpeg 2x, ./img/${filename}-m@3x.jpeg 3x`, width= width, height= height, alt= altText, loading= lazy)
 
-mixin pictureAdaptiveJpgWebp({filename, width, height, altText, cssClass, lazy=false})
+mixin pictureAdaptiveJpgWebp({filename, width, height=width, altText, cssClass, lazy=false})
   picture
     source(media=`(min-width: ${breakpoints[2]}px)`, type="image/webp", srcset= `./img/${filename}-d@1x.webp 1x,./img/${filename}-d@2x.webp 2x`)
     source(media=`(min-width: ${breakpoints[1]}px)`, type="image/webp", srcset= `./img/${filename}-sd@1x.webp 1x,./img/${filename}-sd@2x.webp 2x`)
@@ -16,7 +21,7 @@ mixin pictureAdaptiveJpgWebp({filename, width, height, altText, cssClass, lazy=f
     source(media=`(min-width: ${breakpoints[1]}px)`, srcset= `./img/${filename}-sd@1x.jpeg 1x, ./img/${filename}-sd@2x.jpeg 2x`)
     img(class= cssClass, src= `./img/${filename}-m@1x.jpeg`, srcset=`./img/${filename}-m@2x.jpeg 2x, ./img/${filename}-m@3x.jpeg 3x`, width= width, height= height, alt= altText, loading= lazy)
 
-mixin pictureAdaptiveJpgWebpShort({filename, width, height, altText, cssClass, lazy=false})
+mixin pictureAdaptiveJpgWebpShort({filename, width, height=width, altText, cssClass, lazy=false})
   picture
     source(media=`(min-width: ${breakpoints[1]}px)`, type="image/webp", srcset= `./img/${filename}@1x.webp 1x,./img/${filename}@2x.webp 2x`)
     source(type="image/webp", srcset= `./img/${filename}-m@1x.webp 1x, ./img/${filename}-m@2x.webp 2x, ./img/${filename}-m@3x.webp 3x`)
