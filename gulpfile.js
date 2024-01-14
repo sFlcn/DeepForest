@@ -55,25 +55,29 @@ const paths = {
 };
 
 // External data collect
-const historyData = JSON.parse(fs.readFileSync('source/data/history.json'));
-const albumsList = JSON.parse(fs.readFileSync('source/data/albums.json'));
-const copyrightsData = htmlMinify.minify(md.render(fs.readFileSync('source/data/copyrights.md', 'utf8')), {collapseWhitespace: true});
-const albumsData = [];
-
-for (let i = 0; i < albumsList.length; i++) {
-  const albumName = albumsList[i].name;
-  const albumMarkup = htmlMinify.minify(md.render(fs.readFileSync(`source/data/${albumName}.md`, 'utf8')), {collapseWhitespace: true});
-  albumsData.push({ albumName, albumMarkup });
+const dataCollect = () => {
+  const historyData = JSON.parse(fs.readFileSync('source/data/history.json'));
+  const albumsList = JSON.parse(fs.readFileSync('source/data/albums.json'));
+  const copyrightsData = htmlMinify.minify(md.render(fs.readFileSync('source/data/copyrights.md', 'utf8')), {collapseWhitespace: true});
+  const albumsData = [];
+  
+  for (let i = 0; i < albumsList.length; i++) {
+    const albumName = albumsList[i].name;
+    const albumTitle = albumsList[i].title;
+    const albumYandexID = albumsList[i].yandexID;
+    const albumMarkup = htmlMinify.minify(md.render(fs.readFileSync(`source/data/${albumName}.md`, 'utf8')), {collapseWhitespace: true});
+    albumsData.push({ albumName, albumTitle, albumYandexID, albumMarkup });
+  }
+  
+  return { historyData, copyrightsData, albumsData };
 }
-
-const collectedData = { historyData, copyrightsData, albumsData };
 
 const cleanDirs = async () => { await deleteAsync(['build']); };
 
 const pug = (done) => {
   gulp.src(paths.pug.src)
     .pipe(plumber())
-    .pipe(gulppug({ locals: collectedData }))
+    .pipe(gulppug({ locals: dataCollect() }))
     .pipe(gulp.dest(paths.pug.dest))
     .pipe(sync.stream());
   done();
