@@ -111,6 +111,7 @@
   display: inline-block;
   text-decoration: none;
   cursor: pointer;
+  transform: perspective(100px);
   transition: color 0.4s, transform 0.9s;
 }
 
@@ -128,7 +129,11 @@
 .header__nav-item:hover a,
 .header__nav-item:focus-within a {
   color: $palette-accent;
-  transform: translateX(7px);
+  transform: perspective(100px) translate3d(2px, 3px, 25px);
+
+  @media (min-width: $small-desktop-width) {
+    transform: perspective(100px) translate3d(11px, 0, 0);
+  }
 }
 
 .header__big-logo {
