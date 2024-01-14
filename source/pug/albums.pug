@@ -7,12 +7,16 @@ block prepend variables
 mixin albumArticle(albumData)
   article.albums__album.album !{albumData.albumMarkup}
     .album__cover
-      +picturePngWebp2x({filename: `album-${albumData.albumName}`, altText: `Обложка ${albumData.albumName}.`, width: 239, lazy: "lazy" })
+      +picturePngWebp2x({filename: `album-${albumData.name}`, altText: `Обложка ${albumData.title}.`, width: 239, lazy: "lazy" })
+      if (albumData.yandexID)
+        .album__linkbox
+          a.album__link(href= `https://music.yandex.ru/album/${albumData.yandexID}`, target="_blank", rel="noopener", title=`альбом "${albumData.title}" на Яндекс музыке`)
+            span.visuallyhidden= `https://music.yandex.ru/album/${albumData.yandexID}`
 
 block main
   main.main
     section.albums
       .wrapper--ext
         h1.albums__heading Альбомы
-        each item in albumsData
+        each item in albumsList
           +albumArticle(item)

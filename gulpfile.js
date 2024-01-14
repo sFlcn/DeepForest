@@ -62,14 +62,10 @@ const dataCollect = () => {
   const albumsData = [];
   
   for (let i = 0; i < albumsList.length; i++) {
-    const albumName = albumsList[i].name;
-    const albumTitle = albumsList[i].title;
-    const albumYandexID = albumsList[i].yandexID;
-    const albumMarkup = htmlMinify.minify(md.render(fs.readFileSync(`source/data/${albumName}.md`, 'utf8')), {collapseWhitespace: true});
-    albumsData.push({ albumName, albumTitle, albumYandexID, albumMarkup });
+    albumsList[i].albumMarkup = htmlMinify.minify(md.render(fs.readFileSync(`source/data/${albumsList[i].name}.md`, 'utf8')), {collapseWhitespace: true});
   }
   
-  return { historyData, copyrightsData, albumsData };
+  return { historyData, copyrightsData, albumsList };
 }
 
 const cleanDirs = async () => { await deleteAsync(['build']); };
