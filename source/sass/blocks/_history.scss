@@ -449,7 +449,10 @@ $dfr-part: $dfr - 256px;
   }
 
   & p:nth-of-type(8) {
-    @media (min-width: $small-desktop-width) {width: 300px}
+    @media (min-width: $small-desktop-width) {
+      width: 300px;
+      margin-bottom: 80px;
+    }
 
     @include twothirdsrow;
   }
