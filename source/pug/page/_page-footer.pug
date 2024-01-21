@@ -18,10 +18,10 @@ mixin logoLinkFooter(link)
       if block
         block
 
-mixin footerNavItem({ name, pageHref, secondary })
+mixin footerNavItem({ name, pageHref, anchor, isAlwaysActive, secondary })
   li(class= `footer__nav-item${ pageHref === currentPage ? " footer__nav-item--current" : ""}${ secondary ? " footer__nav-item--secondary" : ""}`)
-    if ((pageHref) && (pageHref !== currentPage))
-      a.footer__nav-link(href= pageHref + ".html")
+    if (((pageHref) && (pageHref !== currentPage)) || (isAlwaysActive))
+      a.footer__nav-link(href= `${pageHref}.html${anchor ? `#${anchor}` : ``}`)
         span= name
     else
       span(tabindex="0")= name

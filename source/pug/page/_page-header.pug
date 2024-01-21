@@ -16,10 +16,10 @@ mixin logoLinkHeader(link)
       if block
         block
 
-mixin siteNavItem({ name, pageHref, navSubPages }, mode, index)
+mixin siteNavItem({ name, pageHref, anchor }, mode, index)
   li(class= `header__nav-item ${ pageHref === currentPage ? "header__nav-item--current" : ""}`)
     if ((pageHref) && (pageHref !== currentPage))
-      a(href= pageHref + ".html")
+      a(href= `${pageHref}.html${anchor ? `#${anchor}` : ``}`)
         span= name
     else
       span(tabindex="0")= name
@@ -32,7 +32,7 @@ header.header
     //- слайдер
     nav.header__nav
       .header__logo-block
-        +logoLinkHeader("logoHref")
+        +logoLinkHeader(logoHref)
           span.visuallyhidden Логотип Deep Forest.
       ul.header__nav-menu
         each item in mainNav

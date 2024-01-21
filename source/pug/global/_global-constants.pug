@@ -2,9 +2,9 @@
   // для навигации — названия и имена файлов
   const PAGES = {
     "index": { name: "История", pageHref: "index" },
-    "albums": { name: "Альбомы", pageHref: "albums" },
-    "singles": { name: "Синглы, ремиксы, концертные записи", secondary: true, pageHref: "singles" },
-    "albumsOther": { name: "Альбомы, косвенно относящиеся к группе", secondary: true, pageHref: "albumsother" },
+    "albums": { name: "Альбомы", pageHref: "albums", anchor: "albums", isAlwaysActive: true },
+    "singles": { name: "Синглы, ремиксы, концертные записи", pageHref: "albums", anchor: "singlesmixes", isAlwaysActive: true, secondary: true },
+    "albumsOther": { name: "Альбомы, косвенно относящиеся к группе", pageHref: "albums", anchor: "albumsother", isAlwaysActive: true, secondary: true },
     "lyrics": { name: "Тексты песен", pageHref: "lyrics" },
     "video": { name: "Видео", pageHref: "video" },
     "search": { name: "Поиск", pageHref: "search" },
