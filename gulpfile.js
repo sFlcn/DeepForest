@@ -58,14 +58,19 @@ const paths = {
 const dataCollect = () => {
   const historyData = JSON.parse(fs.readFileSync('source/data/history.json'));
   const albumsList = JSON.parse(fs.readFileSync('source/data/albums.json'));
+  const singlesnMixesList = JSON.parse(fs.readFileSync('source/data/singles-remixes.json'));
   const copyrightsData = htmlMinify.minify(md.render(fs.readFileSync('source/data/copyrights.md', 'utf8')), {collapseWhitespace: true});
   const albumsData = [];
   
+  for (let i = 0; i < singlesnMixesList.length; i++) {
+    singlesnMixesList[i].albumMarkup = htmlMinify.minify(md.render(fs.readFileSync(`source/data/${singlesnMixesList[i].name}.md`, 'utf8')), {collapseWhitespace: true});
+  }
+
   for (let i = 0; i < albumsList.length; i++) {
     albumsList[i].albumMarkup = htmlMinify.minify(md.render(fs.readFileSync(`source/data/${albumsList[i].name}.md`, 'utf8')), {collapseWhitespace: true});
   }
   
-  return { historyData, copyrightsData, albumsList };
+  return { historyData, copyrightsData, albumsList, singlesnMixesList };
 }
 
 const cleanDirs = async () => { await deleteAsync(['build']); };

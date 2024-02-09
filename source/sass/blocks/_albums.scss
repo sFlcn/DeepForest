@@ -1,6 +1,16 @@
 $mobile-image-size: 239px;
 
-.albums {
+#albums,
+#singlesmixes {
+  scroll-margin-top: 60px;
+
+  @media (min-width: $small-desktop-width) {
+    scroll-margin-top: 0;
+  }
+}
+
+.albums,
+.singlesmixes {
   position: relative;
   padding-top: 25px;
   overflow: hidden;
@@ -10,14 +20,26 @@ $mobile-image-size: 239px;
   }
 }
 
-.albums::before {
+.albums__container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+
+  @media (min-width: $small-desktop-width) {
+    display: block;
+  }
+}
+
+.albums::before,
+.singlesmixes::before {
   content: "";
   position: absolute;
   width: 276px;
   height: 95px;
   top: 0;
   left: 50%;
-  transform: translateX(-81%);
+  transform: translateX(-55%);
   z-index: -1;
   background: no-repeat url("../img/heading-backlight-m.jpg");
   animation: 3s linear infinite apparition;
@@ -25,14 +47,23 @@ $mobile-image-size: 239px;
   @media (min-width: $small-desktop-width) {
     width: 969px;
     height: 333px;
-    top: 42px;
+    top: 44px;
     left: 50%;
     transform: translateX(-50%);
     background-image: url("../img/heading-backlight-d.jpg");
   }
 }
 
-.albums__heading {
+.singlesmixes::before {
+  top: 22px;
+
+  @media (min-width: $small-desktop-width) {
+    top: 44px;
+  }
+}
+
+.albums__heading,
+.singlesmixes__heading {
   margin: 0 20px 50px;
   padding: 15px;
   letter-spacing: 0.48px;
@@ -41,6 +72,7 @@ $mobile-image-size: 239px;
     color: $palette-dim;
     width: 0.5px;
   }
+
   text-transform: uppercase;
   text-align: center;
   cursor: default;
@@ -80,10 +112,13 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
 
 .album {
   display: grid;
+  width: 100%;
+  margin-bottom: 30px;
 
   @media (min-width: $small-desktop-width) {
     grid-template-columns: $alb-sdfr $alb-sdfr;
     column-gap: $alb-sdgap;
+    margin-bottom: 120px;
   }
 
   @media (min-width: $desktop-width) {
@@ -98,15 +133,57 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
   }
 }
 
+.album--short {
+  @media (max-width: ($small-desktop-width - 1)) {
+    width: calc((100% - 180px) / 2);
+  }
+
+  @media (max-width: ($tablet-width - 1)) {
+    width: calc((100% - 60px) / 2);
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.singlesmixes .album {
+  margin: 0 0 45px;
+  padding-top: 74.5px;
+  border-top: 0.5px solid $palette-dim;
+
+  @media (min-width: $small-desktop-width) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  &:nth-of-type(1) {
+    padding-top: 0;
+    border-top-color: transparent;
+  }
+
+  &:nth-of-type(2) {
+    @media (max-width: ($small-desktop-width - 1)) {
+      padding-top: 0;
+      border-top-color: transparent;
+    }
+  }
+}
+
 .album h2 {
   order: -2;
   text-align: center;
   margin: 0 0 20px;
+  font: {
+    family: "Citrica Cyrillic", "Trebuchet MS", sans-serif;
+    style: normal;
+    size: 40px;
+    weight: 400;
+  }
 
-  @include font-album;
+  line-height: 90%;
+  color: $palette-brightcontrast;
 
   @media (min-width: $small-desktop-width) {
     text-align: start;
+    font-size: 64px;
   }
 
   & em {
@@ -116,6 +193,66 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
       font-size: 40px;
     }
   }
+}
+
+.album--short h2 {
+  @media (max-width: ($small-desktop-width - 1)) {
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 30px;
+    margin-left: calc((100% - 150px) / 2);
+    text-align: start;
+    font-size: 24px;
+  }
+}
+
+.singlesmixes .album h2 {
+  grid-row: 1 / 10;
+  display: flex;
+  flex-flow: column;
+  
+  @media (min-width: $small-desktop-width) {
+    & em {
+      order: -1;
+      margin-bottom: 50px;
+    }
+  }
+}
+
+.album ol {
+  margin: 0 0 30px calc((100% - $mobile-image-size) / 2 - 5px);
+  padding: 0 0 0 20px;
+
+  @include font-primary;
+
+  @media (min-width: $small-desktop-width) {
+    margin-left: 0;
+  }
+
+  & li {
+    margin-bottom: 30px;
+
+    & em {
+      color: $palette-dim;
+    }
+  }
+}
+
+.album--short ol {
+  @media (max-width: ($small-desktop-width - 1)) {
+    margin: 0 0 30px calc((100% - 150px) / 2 - 8px);
+    font-size: 13px;
+  }
+
+  & li {
+    @media (max-width: ($small-desktop-width - 1)) {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.album ol li:last-of-type {
+  margin-bottom: 0;
 }
 
 .album p {
@@ -130,40 +267,58 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
   }
 
   @media (min-width: $small-desktop-width) {
-    margin: 0 0 45px;
     font-size: 16px;
   }
 }
 
-.album ol {
-  margin: 0 0 50px calc((100% - $mobile-image-size) / 2);
-  padding: 0 0 0 20px;
-
-  @include font-primary($line-height: 130%);
-
-  @media (min-width: $small-desktop-width) {
-    margin: 0 0 150px;
+.album--short p {
+  @media (max-width: ($small-desktop-width - 1)) {
+    margin: 0 0 30px calc((100% - 150px) / 2 - 8px);
   }
+}
 
-  & li {
-    margin-bottom: 11px;
+.album ol + p:has(+ol[start]) {
+  margin-bottom: 30px;
+  color: $palette-brightcontrast;
+
+  & em {
+    text-transform: uppercase;
+    font-style: normal;
   }
 }
 
 .album__cover {
   position: relative;
+  align-self: start;
   margin-bottom: 44px;
   text-align: center;
   order: -1;
 
   @media (min-width: $small-desktop-width) {
     grid-row: 1 / 10;
+    justify-self: end;
+    margin-bottom: 30px;
+  }
+}
+
+.album--short .album__cover {
+  @media (max-width: ($small-desktop-width - 1)) {
+    width: 150px;
+    justify-self: center;
+    margin-bottom: 20px;
   }
 }
 
 .album:nth-of-type(even) .album__cover {
   @media (min-width: $small-desktop-width) {
     grid-column: 2;
+  }
+}
+
+.singlesmixes .album .album__cover {
+  @media (min-width: $small-desktop-width) {
+    grid-column: 3;
+    width: 327px;
   }
 }
 
@@ -182,18 +337,14 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
   width: 33px;
   height: 33px;
   left: calc(50% - 16.5px);
-  top: 239px - 16.5px;
+  top: calc(100% - 16.5px);
   border-radius: 50%;
 
   @media (min-width: $small-desktop-width) {
     width: 60px;
     height: 60px;
     left: calc(50% - 30px);
-    top: 407px - 30px;
-  }
-
-  @media (min-width: $desktop-width) {
-    top: 433px - 30px;
+    top: calc(100% - 30px);
   }
 }
 
