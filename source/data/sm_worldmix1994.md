@@ -9,9 +9,9 @@
 7. Desert Walk
 8. White Whisper
 9. The 2nd Twilight
-10. Sweet Lullaby (ambient Mix)
-11. Sweet Lullaby (the world mix)
-12. Sweet Lullaby (apollo Mix)
-13. Deep Forest (sunrise at alcatraz)
-14. Forest Hymn (apollo Mix)
+10. Sweet Lullaby *(ambient Mix)*
+11. Sweet Lullaby *(the world mix)*
+12. Sweet Lullaby *(apollo Mix)*
+13. Deep Forest *(sunrise at alcatraz)*
+14. Forest Hymn *(apollo Mix)*
 15. Forest Hymn

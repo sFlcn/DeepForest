@@ -8,10 +8,10 @@
 4. 1716
 5. Deep Weather
 6. Comparsa
-7. Earthquake (transition1)
-8. Tres Marias (feat. Marcella Lewis)
+7. Earthquake *(transition1)*
+8. Tres Marias *(feat. Marcella Lewis)*
 9. Radio Belize
 10. Ekue Ekue
-11. La Lune Se Bat Avec Les Étoiles (transition2)
+11. La Lune Se Bat Avec Les Étoiles *(transition2)*
 12. Forest Power
-13. Media Luna (feat. Ana Torroja & Abed Azrie)
+13. Media Luna *(feat. Ana Torroja & Abed Azrie)*

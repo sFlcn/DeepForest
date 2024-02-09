@@ -2,4 +2,4 @@
 
 1. Madazulu
 2. Tres Marias
-3. La Luna Se Bat Avec Les Étoiles (transition 2)
+3. La Luna Se Bat Avec Les Étoiles *(transition 2)*

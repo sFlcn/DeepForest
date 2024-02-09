@@ -9,8 +9,8 @@
 7. Pé De Flor
 8. A Volta
 9. Goiano
-10. Terra De Índio (Part 2)
+10. Terra De Índio *(Part 2)*
 11. Cerradão
-12. Sweet Lullaby (Brazilian Version)
+12. Sweet Lullaby *(Brazilian Version)*
 13. Virtual Forest
 14. Pimenta Do Tempero

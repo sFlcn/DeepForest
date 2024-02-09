@@ -1,4 +1,4 @@
-## Boheme (the&nbsp;remixes) *1995*
+## Boheme (the remixes) *1995*
 
 1. Citizen Zexos Mix
 2. Dreadzone Remix

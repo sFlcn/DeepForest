@@ -1,9 +1,9 @@
 ## Evo Devo *2016*
 
-1. Simply Done (feat. Oyme)
+1. Simply Done *(feat. Oyme)*
 2. Stutter Dream
 3. B-Vatar
-4. Oymes's Song (feat. Oyme)
+4. Oymes's Song *(feat. Oyme)*
 5. Somewhere
 6. Happy Tribe
 7. Tibet
