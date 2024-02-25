@@ -7,11 +7,11 @@ block prepend variables
 mixin albumArticle(albumData, cssClass)
   article.albums__album.album(class=cssClass) !{albumData.albumMarkup}
     .album__cover
-      +picturePngWebp2x({filename: `album-${albumData.name}`, altText: `Обложка ${albumData.title}.`, width: 239, lazy: "lazy" })
+      +picturePngWebp2x({filename: `${albumData.name}`, altText: `Обложка ${albumData.title}.`, width: 239, lazy: "lazy" })
       if (albumData.yandexID)
         .album__linkbox
-          a.album__link(href= `https://music.yandex.ru/album/${albumData.yandexID}`, target="_blank", rel="noopener", title=`альбом "${albumData.title}" на Яндекс музыке`)
-            span.visuallyhidden= `https://music.yandex.ru/album/${albumData.yandexID}`
+          a.album__link(href= `https://music.yandex.ru/album/${albumData.yandexID}`, target="_blank", rel="noopener", title="Слушать на Яндекс музыке")
+            span.visuallyhidden= `слушать на Яндекс музыке — "${albumData.title}"`
 
 block main
   main.main
@@ -27,3 +27,9 @@ block main
           h1.singlesmixes__heading Синглы, ремиксы, концертные записи
           each item in singlesnMixesList
             +albumArticle(item, "album--short")
+    #etcalbums
+      section.etcalbums
+        .wrapper--ext.albums__container
+          h1.etcalbums__heading Альбомы, косвенно относящиеся к группе
+          each item in etcAlbumsList
+            +albumArticle(item, `${item.cssClassMod ? `album${cssClassMod}` : `album--short` }`)

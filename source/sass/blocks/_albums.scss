@@ -1,7 +1,8 @@
 $mobile-image-size: 239px;
 
 #albums,
-#singlesmixes {
+#singlesmixes,
+#etcalbums {
   scroll-margin-top: 60px;
 
   @media (min-width: $small-desktop-width) {
@@ -10,7 +11,8 @@ $mobile-image-size: 239px;
 }
 
 .albums,
-.singlesmixes {
+.singlesmixes,
+.etcalbums {
   position: relative;
   padding-top: 25px;
   overflow: hidden;
@@ -32,7 +34,8 @@ $mobile-image-size: 239px;
 }
 
 .albums::before,
-.singlesmixes::before {
+.singlesmixes::before,
+.etcalbums::before {
   content: "";
   position: absolute;
   width: 276px;
@@ -54,7 +57,8 @@ $mobile-image-size: 239px;
   }
 }
 
-.singlesmixes::before {
+.singlesmixes::before,
+.etcalbums::before {
   top: 22px;
 
   @media (min-width: $small-desktop-width) {
@@ -63,7 +67,8 @@ $mobile-image-size: 239px;
 }
 
 .albums__heading,
-.singlesmixes__heading {
+.singlesmixes__heading,
+.etcalbums__heading {
   margin: 0 20px 50px;
   padding: 15px;
   letter-spacing: 0.48px;
@@ -89,21 +94,6 @@ $mobile-image-size: 239px;
   }
 }
 
-.albums__album {
-  margin-left: 20px;
-  margin-right: 20px;
-
-  @media (min-width: $tablet-width) {
-    margin-left: 12.5%;
-    margin-right: 12.5%;
-  }
-
-  @media (min-width: $small-desktop-width) {
-    margin-left: unset;
-    margin-right: unset;
-  }
-}
-
 // ------------------------------- grid settings -------------------------------
 $alb-sdgap: 48px;
 $alb-dgap: 49px;
@@ -113,11 +103,20 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
 .album {
   display: grid;
   width: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
   margin-bottom: 30px;
+
+  @media (min-width: $tablet-width) {
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+  }
 
   @media (min-width: $small-desktop-width) {
     grid-template-columns: $alb-sdfr $alb-sdfr;
     column-gap: $alb-sdgap;
+    margin-left: unset;
+    margin-right: unset;
     margin-bottom: 120px;
   }
 
@@ -153,18 +152,38 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
   @media (min-width: $small-desktop-width) {
     grid-template-columns: 1fr 1fr 1fr;
   }
+}
 
-  &:nth-of-type(1) {
+.etcalbums .album {
+  margin: 0 0 45px;
+  padding-top: 74.5px;
+  border-top: 0.5px solid $palette-dim;
+
+  @media (min-width: $small-desktop-width) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media (min-width: $desktop-width) {
+    grid-template-columns: 2fr 1fr 1fr;
+    column-gap: 30px;
+  }
+}
+
+.singlesmixes .album:nth-of-type(1) {
+  padding-top: 0;
+  border-top-color: transparent;
+}
+
+.singlesmixes .album:nth-of-type(2) {
+  @media (max-width: ($small-desktop-width - 1)) {
     padding-top: 0;
     border-top-color: transparent;
   }
+}
 
-  &:nth-of-type(2) {
-    @media (max-width: ($small-desktop-width - 1)) {
-      padding-top: 0;
-      border-top-color: transparent;
-    }
-  }
+.etcalbums .album:nth-of-type(1) {
+  padding-top: 0;
+  border-top-color: transparent;
 }
 
 .album h2 {
@@ -207,15 +226,36 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
 }
 
 .singlesmixes .album h2 {
-  grid-row: 1 / 10;
   display: flex;
   flex-flow: column;
   
   @media (min-width: $small-desktop-width) {
+    grid-row: 1 / 10;
+
     & em {
       order: -1;
       margin-bottom: 50px;
     }
+  }
+}
+
+.etcalbums .album h2 {
+  display: flex;
+  flex-flow: column;
+  
+  @media (min-width: $small-desktop-width) {
+    grid-row: 1;
+    grid-column: 1;
+    margin-bottom: 40px;
+
+    & em {
+      order: -1;
+      margin-bottom: 40px;
+    }
+  }
+
+  @media (min-width: $desktop-width) {
+    max-width: 328px;
   }
 }
 
@@ -238,7 +278,7 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
   }
 }
 
-.album--short ol {
+.album.album--short ol {
   @media (max-width: ($small-desktop-width - 1)) {
     margin: 0 0 30px calc((100% - 150px) / 2 - 8px);
     font-size: 13px;
@@ -247,6 +287,20 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
   & li {
     @media (max-width: ($small-desktop-width - 1)) {
       margin-bottom: 10px;
+    }
+  }
+}
+
+.etcalbums .album ol {
+  @media (max-width: ($small-desktop-width - 1)) {
+    margin: 0 20px 40px;
+  }
+  
+  &:first-of-type {
+    @media (min-width: $small-desktop-width) {
+      grid-column: 2;
+      grid-row: 1 / 3;
+      align-self: center;
     }
   }
 }
@@ -271,9 +325,19 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
   }
 }
 
-.album--short p {
+.album.album--short p {
   @media (max-width: ($small-desktop-width - 1)) {
     margin: 0 0 30px calc((100% - 150px) / 2 - 8px);
+  }
+}
+
+.etcalbums .album p {
+  @media (max-width: ($small-desktop-width - 1)) {
+    margin: 0 20px 40px;
+  }
+
+  @media (min-width: $desktop-width) {
+    max-width: 328px;
   }
 }
 
@@ -285,6 +349,11 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
     text-transform: uppercase;
     font-style: normal;
   }
+}
+
+.etcalbums .album p:first-of-type {
+  grid-column: 1;
+  grid-row: 2 / 10;
 }
 
 .album__cover {
@@ -316,6 +385,13 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
 }
 
 .singlesmixes .album .album__cover {
+  @media (min-width: $small-desktop-width) {
+    grid-column: 3;
+    width: 327px;
+  }
+}
+
+.etcalbums .album .album__cover {
   @media (min-width: $small-desktop-width) {
     grid-column: 3;
     width: 327px;
@@ -355,12 +431,12 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
   color: $palette-darkcontrast;
   border-radius: 50%;
   background: url("../img/play.svg") no-repeat 56% 50% / 33% #fcd655;
-  transition: 1.5s;
+  transition: 1.1s;
   transform: perspective(100px);
 }
 
 .album__linkbox:hover .album__link,
 .album__linkbox:focus-within .album__link {
-  transform: perspective(100px) translate3d(3px, -5px, 30px);
+  transform: perspective(100px) translate3d(1px, -5px, 30px);
   filter: drop-shadow(1px 1px 7px $palette-dim);
 }
