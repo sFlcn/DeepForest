@@ -1,6 +1,6 @@
 ## Welenga *1996*
 
-Совместный проект Michel Sanchez и Wes Madiko
+Совместный проект Michel Sanchez и Wes Madiko
 
 1. Awa Awa
 2. Alane
