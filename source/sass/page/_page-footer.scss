@@ -177,7 +177,7 @@ a.footer__logo {
   padding: 0 0 1px;
   text-decoration: none;
   transition-property: color, border-color, transform;
-  transition: 0.7s;
+  transition-duration: 0.7s;
   transform: perspective(100px);
   border: {
     style: solid;
