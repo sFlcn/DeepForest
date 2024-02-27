@@ -38,10 +38,10 @@ footer.footer
       .footer__logo-block
         +logoLinkFooter(logoHref)
           span.visuallyhidden Логотип Deep Forest.
-      ul.footer__socials.socials__list 
+      ul.footer__socials.socials__list
         each item in SOCIAL_LINKS
           +socialLinkItem(item)
     ul.footer__nav
       each item in footerNav
         +footerNavItem(item)
-    .footer__copyrights !{copyrightsData}
+    .footer__copyrights !{copyrightsMarkup}

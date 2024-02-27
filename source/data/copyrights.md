@@ -1,5 +1,5 @@
-+ Концепция и дизайн: [Lisinica](http://lisinica-port.tilda.ws/)  
-+ Веб-разработка: [sFlcn](https://github.com/sFlcn)  
++ Концепция и дизайн: [Lisinica](http://lisinica-port.tilda.ws/)
++ Веб-разработка: [sFlcn](https://github.com/sFlcn)
 + 2024
 
 При создании проекта были использованы материалы deepforestmusic.com и сайта А. Журавлёва
