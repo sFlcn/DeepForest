@@ -26,6 +26,38 @@
   list-style: none;
 }
 
+@mixin glow($size-m, $size-d, $prop1: top, $pos1-m: 0, $pos1-d: 0, $prop2: left, $pos2-m: 0, $pos2-d: 0, $filename, $filename-d: #{$filename}) {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: #{$size-m}px;
+    height: #{$size-m}px;
+    background: no-repeat url("../img/#{$filename}.png");
+    background-image: image-set(
+      url("../img/#{$filename}.webp") type("image/webp"),
+      url("../img/#{$filename}.png"),
+    );
+    background-size: contain;
+    #{$prop1}: #{$pos1-m}px;
+    #{$prop2}: #{$pos2-m}px;
+
+    @media (min-width: $small-desktop-width) {
+      width: #{$size-d}px;
+      height: #{$size-d}px;
+      background-image: url("../img/#{$filename-d}.png");
+      background-image: image-set(
+        url("../img/#{$filename-d}.webp") type("image/webp"),
+        url("../img/#{$filename-d}.png"),
+      );
+      #{$prop1}: #{$pos1-d}px;
+      #{$prop2}: #{$pos2-d}px;
+    }
+  }
+}
+
 // --- animation ---
 
 @keyframes spinaround {

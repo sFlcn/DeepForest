@@ -38,6 +38,7 @@ const paths = {
     srcX2: 'source/assets/img-2jpg+webp-x2/*.png',
     srcX3: 'source/assets/img-2jpg+webp-x3/*.png',
     srcLoseless: 'source/assets/img-loseless/*.png',
+    srcOrignAndWebpLsless: 'source/assets/img-original+webp-loseless/*.png',
     dest: 'build/img',
   },
   resources: {
@@ -208,6 +209,17 @@ const images = (done) => {
           format: 'webp',
           rename: { suffix: '@2x' },
           webpOptions: { lossless: true },
+        },
+      ],
+    }))
+    .pipe(gulp.dest(paths.images.dest));
+  gulp.src(paths.images.srcOrignAndWebpLsless)
+    .pipe(sharpResponsive({
+      includeOriginalFile: true,
+      formats: [
+        {
+          format: 'webp',
+          webpOptions: { nearLossless: true, effort: 5 },
         },
       ],
     }))
