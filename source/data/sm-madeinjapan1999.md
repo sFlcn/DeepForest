@@ -1,5 +1,7 @@
 ## Made In Japan *1999*
 
+Концертный альбом, выпущенный во время тура по Японии
+
 1. Ekue Ekue
 2. Green And Blue
 3. Deep Weather
