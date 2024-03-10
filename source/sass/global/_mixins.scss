@@ -26,7 +26,7 @@
   list-style: none;
 }
 
-@mixin glow($size-m, $size-d, $prop1: top, $pos1-m: 0, $pos1-d: 0, $prop2: left, $pos2-m: 0, $pos2-d: 0, $filename, $filename-d: #{$filename}) {
+@mixin glow($size-m, $size-d, $prop1: top, $pos1-m: 0, $pos1-d: #{$pos1-m}, $prop2: left, $pos2-m: 0, $pos2-d: #{$pos2-m}, $filename, $filename-d: #{$filename}) {
   position: relative;
 
   &::before {
