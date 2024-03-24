@@ -5,7 +5,7 @@ block prepend variables
   - const pageTitle = "Альбомы Deep Forest";
 
 mixin albumArticle(albumData, cssClass)
-  article.albums__album.album(class=cssClass) !{albumData.albumMarkup}
+  article.albums__album.album(class=cssClass) !{albumData.markup}
     .album__cover
       +picturePngWebp2x({filename: `${albumData.name}`, altText: `Обложка ${albumData.title}.`, width: 239, lazy: "lazy" })
       if (albumData.yandexID)
@@ -32,4 +32,4 @@ block main
         .wrapper--ext.albums__container
           h1.etcalbums__heading Альбомы, косвенно относящиеся к группе
           each item in etcAlbumsList
-            +albumArticle(item, `${item.cssClassMod ? `album${cssClassMod}` : `album--short` }`)
+            +albumArticle(item, `${item.cssClassMod ? `album${item.cssClassMod}` : `album--short` }`)

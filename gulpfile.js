@@ -13,9 +13,10 @@ import gulpSass from 'gulp-sass';
 import sharpResponsive from 'gulp-sharp-responsive';
 import markdownit from 'markdown-it';
 import htmlMinify from 'html-minifier';
+import { log } from 'console';
 
 const sass = gulpSass(dartSass);
-const md = markdownit();
+const md = markdownit({html: true})
 
 const paths = {
   pug: {
@@ -56,21 +57,38 @@ const paths = {
 };
 
 // External data collect
-const dataCollect = () => {
-  const historyData = JSON.parse(fs.readFileSync('source/data/history.json'));
-  const copyrightsMarkup = htmlMinify.minify(md.render(fs.readFileSync('source/data/copyrights.md', 'utf8')), {collapseWhitespace: true});
+const getData = () => {
+  const generateMarkupFromMD = (mdFile) => {
+    return htmlMinify.minify(md.render(fs.readFileSync(`source/data/${mdFile}`, 'utf8')), {collapseWhitespace: true});
+  }
+  
+  const jsonDataColletcion = (jsonFileName) => {
+    const itemsArr = JSON.parse(fs.readFileSync(`source/data/${jsonFileName}.json`));
+    const writeMarkupToObj = (obj) => { obj.markup = generateMarkupFromMD(`${obj.name}.md`) }
 
-  const albumsDataColletcion = (jsonFileName) => {
-    const albumsList = JSON.parse(fs.readFileSync(`source/data/${jsonFileName}.json`));
-    for (let i = 0; i < albumsList.length; i++) {
-      albumsList[i].albumMarkup = htmlMinify.minify(md.render(fs.readFileSync(`source/data/${albumsList[i].name}.md`, 'utf8')), {collapseWhitespace: true});
+    for (let i = 0; i < itemsArr.length; i++) {
+      const obj = itemsArr[i];
+      if (obj.name) {
+        writeMarkupToObj(obj);
+      } else if (Array.isArray(obj.content)) {
+        for (let j = 0; j < obj.content.length; j++) {
+          if (obj.content[j].name) {
+            writeMarkupToObj(obj.content[j]);
+          }
+        }
+      }
     }
-    return albumsList;
+    return itemsArr;
   }
 
-  const albumsList = albumsDataColletcion('albums');
-  const singlesnMixesList = albumsDataColletcion('albums--singles-remixes');
-  const etcAlbumsList = albumsDataColletcion('albums--etc');
+  const historyData = JSON.parse(fs.readFileSync('source/data/history.json'));
+  const copyrightsMarkup = generateMarkupFromMD('copyrights.md');
+  const albumsList = jsonDataColletcion('albums');
+  const singlesnMixesList = jsonDataColletcion('albums--singles-remixes');
+  const etcAlbumsList = jsonDataColletcion('albums--etc');
+  const lyricsList = jsonDataColletcion('lyrics');
+  console.log(lyricsList);
+  console.log(lyricsList[0]);
   
   return { historyData, copyrightsMarkup, albumsList, singlesnMixesList, etcAlbumsList };
 }
@@ -80,7 +98,7 @@ const cleanDirs = async () => { await deleteAsync(['build']); };
 const pug = (done) => {
   gulp.src(paths.pug.src)
     .pipe(plumber())
-    .pipe(gulppug({ locals: dataCollect() }))
+    .pipe(gulppug({ locals: getData() }))
     .pipe(gulp.dest(paths.pug.dest))
     .pipe(sync.stream());
   done();
