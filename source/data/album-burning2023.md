@@ -1,4 +1,4 @@
-## Burning *2023*
+# Burning *2023*
 
 1. Who Did That
 2. Burning Sun

@@ -1,4 +1,4 @@
-## Deep Symphonic *2020*
+# Deep Symphonic *2020*
 
 1. Deep Forest *(Symphonic Version)*
 2. Cafe Europa *(Symphonic Version)*

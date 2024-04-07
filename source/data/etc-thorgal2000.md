@@ -1,4 +1,4 @@
-## Thorgal *2000*
+# Thorgal *2000*
 
 Музыкальная аранжировка: Eric Mouquet
 
