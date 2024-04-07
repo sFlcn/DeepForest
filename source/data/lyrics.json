@@ -1,0 +1,21 @@
+[
+  {
+    "albumName": "Deep Forest",
+    "content": [
+      {"title": "Sweet Lullaby", "name": "lyrics-df-sweetlullaby"},
+      {"title": "Desert Walk", "name": "lyrics-df-desertwalk"}
+    ]
+  },
+  {
+    "albumName": "Boheme",
+    "content": [
+      {"title": "Bohemian Ballet", "name": "lyrics-boheme-bohemianballet"},
+      {"title": "Marta's Song", "name": "lyrics-boheme-martassong"},
+      {"title": "Gathering", "name": "lyrics-boheme-gathering"},
+      {"title": "Lament", "name": "lyrics-boheme-lament"},
+      {"title": "Bulgarian Melody", "name": "lyrics-boheme-bulgarianmelody"},
+      {"title": "Twosome", "name": "lyrics-boheme-twosome"},
+      {"title": "While The Earth Sleeps", "name": "lyrics-boheme-whiletheearthsleeps"}
+    ]
+  }
+]
