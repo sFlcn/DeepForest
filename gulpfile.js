@@ -66,6 +66,7 @@ const getData = () => {
     const itemsArr = JSON.parse(fs.readFileSync(`source/data/${jsonFileName}.json`));
     const writeMarkupToObj = (obj) => { obj.markup = generateMarkupFromMD(`${obj.name}.md`) }
 
+    //search "name" property in object to add markup
     for (let i = 0; i < itemsArr.length; i++) {
       const obj = itemsArr[i];
       if (obj.name) {
@@ -87,11 +88,10 @@ const getData = () => {
   const singlesnMixesList = jsonDataColletcion('albums--singles-remixes');
   const etcAlbumsList = jsonDataColletcion('albums--etc');
   const lyricsList = jsonDataColletcion('lyrics');
-  console.log(lyricsList);
-  console.log(lyricsList[0]);
   
-  return { historyData, copyrightsMarkup, albumsList, singlesnMixesList, etcAlbumsList };
+  return { historyData, copyrightsMarkup, albumsList, singlesnMixesList, etcAlbumsList, lyricsList };
 }
+// 
 
 const cleanDirs = async () => { await deleteAsync(['build']); };
 
