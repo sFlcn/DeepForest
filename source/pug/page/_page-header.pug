@@ -3,7 +3,7 @@
     PAGES.albums,
     PAGES.lyrics,
     PAGES.index,
-    PAGES.video,
+    //- PAGES.video,
   ];
 
 mixin logoLinkHeader(link)
@@ -38,7 +38,7 @@ header.header
         each item in mainNav
           +siteNavItem(item)
         li.header__nav-item
-          a(href=PAGES.search.pageHref + ".html") 
+          a(href=PAGES.search.pageHref + ".html")
             svg.header__nav-icon(width="16", height="16", role="img", aria-label="Поиск.", focusable="false")
               use(href="./img/sprite.svg#search")
     .header__big-logo
