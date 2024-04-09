@@ -1,0 +1,27 @@
+extends page/_page-layout.pug
+
+block prepend variables
+  - const currentPage = PAGES["lyrics"].pageHref;
+  - const pageTitle = "Тексты песен Deep Forest";
+
+block main
+  main.main
+    section.lyrics
+      .wrapper
+        h1.lyrics__heading Тексты некоторых песен
+          span.lyrics__heading-alt , их интерпретация и перевод
+        ul.lyrics__contents-list
+          each album in lyricsList
+            li.lyrics__contents-chapter= album.albumName
+              ul.lyrics__contents-sublist
+                each song in album.content
+                  li.lyrics__contents-item
+                    a(href=`#${song.name}`)= song.title
+        ul.lyrics__list
+          each album in lyricsList
+            li.lyrics__album
+              h2.lyrics__album-title= album.albumName
+              ul.lyrics__songs-list
+                each song in album.content
+                  li(id= song.name)
+                    article.lyrics__song(id= song.name) !{song.markup}
