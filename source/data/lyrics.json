@@ -17,5 +17,23 @@
       {"title": "Twosome", "name": "lyrics-boheme-twosome"},
       {"title": "While The Earth Sleeps", "name": "lyrics-boheme-whiletheearthsleeps"}
     ]
+  },
+  {
+    "albumName": "Music.Detected_",
+    "content": [
+      {"title": "Deep Blue Sea", "name": "lyrics-md_-deepbluesea"},
+      {"title": "Soul Elevator", "name": "lyrics-md_-soulelevator"},
+      {"title": "Elemental", "name": "lyrics-md_-elemental"},
+      {"title": "Media Luna", "name": "lyrics-md_-medialuna"}
+    ]
+  },
+  {
+    "albumName": "Dao Dezi",
+    "content": [
+      {"title": "Hebrides", "name": "lyrics-dd-hebrides"},
+      {"title": "La Jument de Mishao", "name": "lyrics-dd-lajumentdemishao"},
+      {"title": "Ti Eliz Iza", "name": "lyrics-dd-tieliziza"},
+      {"title": "Tri Martolod", "name": "lyrics-dd-trimartolod"}
+    ]
   }
 ]
