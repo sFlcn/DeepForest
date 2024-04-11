@@ -40,7 +40,7 @@
     "not op_mini all"
   ],
   "engines": {
-    "node": "^18.14.1"
+    "node": "^18.20.2"
   },
   "stylelint": {
     "extends": "stylelint-config-standard-scss",
