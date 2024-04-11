@@ -12,7 +12,8 @@ block main
           span.lyrics__heading-alt , их интерпретация и перевод
         ul.lyrics__contents-list
           each album in lyricsList
-            li.lyrics__contents-chapter= album.albumName
+            li.lyrics__contents-chapter
+              .lyrics__contents-album= album.albumName
               ul.lyrics__contents-sublist
                 each song in album.content
                   li.lyrics__contents-item
