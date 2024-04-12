@@ -189,7 +189,7 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
   border-top-color: transparent;
 }
 
-.album h2 {
+.album h1 {
   order: -2;
   text-align: center;
   margin: 0 0 20px;
@@ -217,7 +217,7 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
   }
 }
 
-.album--short h2 {
+.album--short h1 {
   @media (max-width: ($small-desktop-width - 1)) {
     display: flex;
     flex-flow: column;
@@ -228,8 +228,8 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
   }
 }
 
-.singlesmixes .album h2,
-.etcalbums .album h2 {
+.singlesmixes .album h1,
+.etcalbums .album h1 {
   display: flex;
   flex-flow: column;
   
@@ -332,8 +332,8 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
   }
 }
 
-.singlesmixes .album h2 + p,
-.etcalbums .album h2 + p {
+.singlesmixes .album h1 + p,
+.etcalbums .album h1 + p {
   @media (min-width: $small-desktop-width) {
     grid-column: 1;
     grid-row: 2 / 10;
