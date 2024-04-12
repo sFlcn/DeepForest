@@ -26,6 +26,20 @@
   list-style: none;
 }
 
+@mixin overline() {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 0.5px;
+    top: 0;
+    background-color: $palette-dim;
+    transition: width 1.2s ease-in-out;
+  }
+}
+
 @mixin glow($size-m, $size-d, $prop1: top, $pos1-m: 0, $pos1-d: #{$pos1-m}, $prop2: left, $pos2-m: 0, $pos2-d: #{$pos2-m}, $filename, $filename-d: #{$filename}) {
   position: relative;
 
