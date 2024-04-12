@@ -1,0 +1,367 @@
+@mixin lyrics-title() {
+  font: {
+    family: "Gilroy", "Arial", "Helvetica", sans-serif;
+    style: normal;
+    size: 24px;
+    weight: 800;
+  }
+
+  line-height: 120%;
+  cursor: default;
+
+  @media (min-width: $small-desktop-width) {
+    font-size: 36px;
+  }
+}
+
+.lyrics {
+  position: relative;
+  padding-top: 25px;
+  overflow: hidden;
+
+  @media (min-width: $small-desktop-width) {
+    padding-top: 50px;
+  }
+}
+
+.lyrics::before {
+  content: "";
+  position: absolute;
+  width: 276px;
+  height: 95px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-55%);
+  z-index: -1;
+  background: no-repeat url("../img/heading-backlight-m.jpg");
+  animation: 3s linear infinite apparition;
+
+  @media (min-width: $small-desktop-width) {
+    width: 969px;
+    height: 333px;
+    top: 44px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url("../img/heading-backlight-d.jpg");
+  }
+}
+
+.lyrics__heading {
+  margin: 0 20px 50px;
+  padding: 15px;
+  letter-spacing: 0.48px;
+  border: {
+    style: solid none;
+    color: $palette-dim;
+    width: 0.5px;
+  }
+
+  text-transform: uppercase;
+  text-align: center;
+  cursor: default;
+
+  @include font-primary(24px);
+
+  @media (min-width: $tablet-width) {
+    margin: 0 12.5% 50px;
+  }
+
+  @media (min-width: $small-desktop-width) {
+    padding: 47px;
+    margin: 0 0 100px;
+  }
+}
+
+.lyrics__heading-alt {
+  @media (max-width: ($tablet-width - 1)) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
+}
+
+.lyrics__contents-list {
+  @include list;
+
+  padding-left: 40px;
+  color: $palette-brightcontrast;
+
+  @media (min-width: $tablet-width) {
+    padding-left: 15%;
+  }
+
+  @media (min-width: $small-desktop-width) {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0;
+    margin-bottom: 50px;
+  }
+}
+
+.lyrics__contents-chapter {
+  @include lyrics-title;
+
+  margin: 0 0 48px;
+
+  @media (min-width: $small-desktop-width) {
+    padding-left: 55px;
+    min-width: 240px;
+
+    &:nth-child(4n+1) {
+      width: 296px;
+    }
+
+    &:nth-child(4n+4) {
+      margin-left: auto;
+    }
+  }
+
+  @media (min-width: $desktop-width) {
+    padding-left: 67px;
+    min-width: 245px;
+
+    &:nth-child(4n+1) {
+      width: 299px;
+    }
+  }
+}
+
+.lyrics__contents-sublist {
+  @include list;
+}
+
+.lyrics__contents-album {
+  margin-bottom: 22px;
+
+  @media (min-width: $small-desktop-width) {
+    margin-bottom: 17px;
+  }
+}
+
+.lyrics__contents-item {
+  font: {
+    family: "Evolventa", "Helvetica", "Arial", sans-serif;
+    style: normal;
+    size: 16px;
+    weight: 400;
+  }
+
+  line-height: 150%;
+
+  & a {
+    display: inline-block;
+    margin: 0 0 4px;
+    padding: 2px 0;
+    text-decoration: none;
+    transition: 0.7s;
+    transform: perspective(100px);
+
+    &:hover,
+    &:focus-within {
+      color: $palette-accent;
+      transform: perspective(100px) translate3d(2px, -2px, 15px);
+    }
+  }
+}
+
+.lyrics__list {
+  @include list;
+}
+
+.lyrics__album {
+  display: flex;
+  flex-flow: row wrap;
+
+  @media (min-width: $small-desktop-width) {
+    padding-top: 75px;
+    border: {
+      style: solid none none;
+      color: $palette-dim;
+      width: 0.5px;
+    }
+  }
+
+  @media (min-width: $desktop-width) {
+    padding-top: 90px;
+  }
+}
+
+.lyrics__album-title {
+  @include overline;
+
+  width: 100%;
+  margin: 0;
+  padding: 30px 0;
+  font: {
+    family: "Citrica Cyrillic", "Trebuchet MS", sans-serif;
+    style: normal;
+    size: 24px;
+    weight: 400;
+  }
+
+  line-height: 90%;
+  color: $palette-accent;
+  cursor: default;
+
+  @media (min-width: $tablet-width) {
+    padding-left: 15%;
+  }
+
+  @media (min-width: $small-desktop-width) {
+    padding: 50px 0 0 55px;
+    width: 351px;
+    font-size: 36px;
+    line-height: 120%;
+  }
+
+  @media (min-width: $desktop-width) {
+    padding-left: 67px;
+    width: 366px;
+  }
+
+  &::before {
+    width: 0;
+    
+    @media (max-width: ($tablet-width - 1)) {
+      width: 100%;
+    }
+  }
+}
+
+.lyrics__songs-list {
+  @include list;
+
+  @media (min-width: $tablet-width) {
+    padding-left: 15%;
+  }
+
+  @media (min-width: $small-desktop-width) {
+    padding-left: 0;
+    width: 913px;
+  }
+}
+
+.lyrics__songs-list li {
+  scroll-margin-top: 40px;
+  
+  @media (min-width: $small-desktop-width) {
+    padding-top: 50px;
+    scroll-margin-top: 0;
+  }
+
+  @include overline;
+
+  &::before {
+    width: 100%;
+  }
+
+  &:first-child::before {
+    @media (min-width: $small-desktop-width) {
+      width: 0;
+    }
+  }
+}
+
+.lyrics__song {
+  display: flex;
+  flex-flow: column;
+  margin: 0 0 14px;
+  padding-top: 30px;
+
+  @include font-primary;
+
+  @media (min-width: $small-desktop-width) {
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding-top: 0;
+
+    & > * {
+      width: 430px;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.lyrics__song h1,
+.lyrics__song h2 {
+  @include lyrics-title;
+
+  margin: 0 0 30px 40px;
+
+  @media (min-width: $small-desktop-width) {
+    margin: 0 0 40px;
+  }
+}
+
+.lyrics__song div :first-child {
+  margin-top: 0;
+}
+
+.lyrics__song div:first-of-type {
+  @media (max-width: ($small-desktop-width - 1)) {
+    margin-bottom: 15px;
+  }
+
+  & p strong {
+    display: inline-block;
+    margin-left: 40px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    text-transform: uppercase;
+    color: $palette-dim;
+
+    @media (min-width: $small-desktop-width) {
+      margin-left: 0;
+    }
+  }
+
+  & p em {
+    display: inline-block;
+    margin-left: 40px;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 120%;
+    color: $palette-dim;
+
+    @media (min-width: $small-desktop-width) {
+      margin-left: 0;
+    }
+  }
+}
+
+.lyrics__song div:nth-of-type(2) {
+  margin-bottom: 15px;
+}
+
+.lyrics__song div:nth-of-type(3) {
+  margin: 0 0 40px 40px;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 120%;
+  color: $palette-dim;
+
+  @media (min-width: $small-desktop-width) {
+    margin-left: 0;
+  }
+}
+
+.lyrics__song div:nth-of-type(1),
+.lyrics__song div:nth-of-type(4) {
+  @media (min-width: $small-desktop-width) {
+    order: -2;
+  }
+}
+
+.lyrics__song div:nth-of-type(2),
+.lyrics__song div:nth-of-type(5) {
+  @media (min-width: $small-desktop-width) {
+    order: -1;
+    margin-bottom: 55px;
+  }
+}
