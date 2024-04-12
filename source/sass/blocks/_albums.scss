@@ -40,9 +40,9 @@ $mobile-image-size: 239px;
   position: absolute;
   width: 276px;
   height: 95px;
-  top: 0;
+  top: 17px;
   left: 50%;
-  transform: translateX(-55%);
+  transform: translateX(-50%);
   z-index: -1;
   background: no-repeat url("../img/heading-backlight-m.jpg");
   animation: 3s linear infinite apparition;
@@ -54,15 +54,6 @@ $mobile-image-size: 239px;
     left: 50%;
     transform: translateX(-50%);
     background-image: url("../img/heading-backlight-d.jpg");
-  }
-}
-
-.singlesmixes::before,
-.etcalbums::before {
-  top: 22px;
-
-  @media (min-width: $small-desktop-width) {
-    top: 44px;
   }
 }
 
