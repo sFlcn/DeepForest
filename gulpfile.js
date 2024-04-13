@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import fs from 'fs';
@@ -13,10 +14,10 @@ import gulpSass from 'gulp-sass';
 import sharpResponsive from 'gulp-sharp-responsive';
 import markdownit from 'markdown-it';
 import htmlMinify from 'html-minifier';
-import { log } from 'console';
+// import { log } from 'console';
 
 const sass = gulpSass(dartSass);
-const md = markdownit({html: true})
+const md = markdownit({ html: true });
 
 const paths = {
   pug: {
@@ -56,17 +57,21 @@ const paths = {
   },
 };
 
-// External data collect
+// ↓ External data collect ------------------------------------------------------------------ ↓
 const getData = () => {
-  const generateMarkupFromMD = (mdFile) => {
-    return htmlMinify.minify(md.render(fs.readFileSync(`source/data/${mdFile}`, 'utf8')), {collapseWhitespace: true});
-  }
-  
+  const generateMarkupFromMD = (mdFile) => htmlMinify.minify(
+    md.render(
+      fs.readFileSync(`source/data/${mdFile}`, 'utf8'),
+    ),
+    { collapseWhitespace: true },
+  );
+
   const jsonDataColletcion = (jsonFileName) => {
     const itemsArr = JSON.parse(fs.readFileSync(`source/data/${jsonFileName}.json`));
-    const writeMarkupToObj = (obj) => { obj.markup = generateMarkupFromMD(`${obj.name}.md`) }
+    // eslint-disable-next-line no-param-reassign
+    const writeMarkupToObj = (obj) => { obj.markup = generateMarkupFromMD(`${obj.name}.md`); };
 
-    //search "name" property in object to add markup
+    // search "name" property in object to add markup
     for (let i = 0; i < itemsArr.length; i++) {
       const obj = itemsArr[i];
       if (obj.name) {
@@ -80,7 +85,7 @@ const getData = () => {
       }
     }
     return itemsArr;
-  }
+  };
 
   const historyData = JSON.parse(fs.readFileSync('source/data/history.json'));
   const copyrightsMarkup = generateMarkupFromMD('copyrights.md');
@@ -88,10 +93,18 @@ const getData = () => {
   const singlesnMixesList = jsonDataColletcion('albums--singles-remixes');
   const etcAlbumsList = jsonDataColletcion('albums--etc');
   const lyricsList = jsonDataColletcion('lyrics');
-  
-  return { historyData, copyrightsMarkup, albumsList, singlesnMixesList, etcAlbumsList, lyricsList };
-}
-// 
+
+  return {
+    historyData,
+    copyrightsMarkup,
+    albumsList,
+    singlesnMixesList,
+    etcAlbumsList,
+    lyricsList,
+  };
+};
+
+// ↑ ---------------------------------------------------------------------------------------- ↑
 
 const cleanDirs = async () => { await deleteAsync(['build']); };
 
@@ -185,7 +198,7 @@ const images = (done) => {
           format: 'jpeg',
           rename: { suffix: '@2x' },
           jpegOptions: { progressive: true },
-          width: (metadata) => metadata.width / 3 * 2,
+          width: (metadata) => (metadata.width / 3) * 2,
         },
         {
           format: 'jpeg',
@@ -202,7 +215,7 @@ const images = (done) => {
           format: 'webp',
           rename: { suffix: '@2x' },
           webpOptions: { lossless: false },
-          width: (metadata) => metadata.width / 3 * 2,
+          width: (metadata) => (metadata.width / 3) * 2,
         },
         {
           format: 'webp',
@@ -243,7 +256,6 @@ const images = (done) => {
     }))
     .pipe(gulp.dest(paths.images.dest));
   done();
-  // await Promise.resolve('Images ready!');
 };
 
 const reload = (done) => {
