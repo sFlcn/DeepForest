@@ -59,9 +59,6 @@ Ramo son de suerte a media luna
 </div>
 
 <div>
-
-## Стихийная
-
 </div>
 
 <div>
