@@ -14,6 +14,8 @@ import gulpSass from 'gulp-sass';
 import sharpResponsive from 'gulp-sharp-responsive';
 import markdownit from 'markdown-it';
 import htmlMinify from 'html-minifier';
+import webpack from 'webpack-stream';
+import webpackConf from './webpack.config.cjs';
 // import { log } from 'console';
 
 const sass = gulpSass(dartSass);
@@ -140,13 +142,13 @@ const styles = (done) => {
   done();
 };
 
-// const scripts = (done) => {
-//   gulp.src('.')
-//     .pipe(webpack(webpackConf))
-//     .pipe(gulp.dest(paths.scripts.dest))
-//     .pipe(sync.stream());
-//   done();
-// };
+const scripts = (done) => {
+  gulp.src('.')
+    .pipe(webpack(webpackConf))
+    .pipe(gulp.dest(paths.scripts.dest))
+    .pipe(sync.stream());
+  done();
+};
 
 const copyResources = (done) => {
   gulp.src(paths.resources.src, { base: paths.resources.base })
@@ -265,7 +267,7 @@ const reload = (done) => {
 
 const watcher = () => {
   gulp.watch(paths.styles.watch, gulp.series(styles));
-  // gulp.watch(paths.scripts.watch, gulp.series(scripts));
+  gulp.watch(paths.scripts.watch, gulp.series(scripts));
   gulp.watch([paths.pug.watch, paths.data], gulp.series(pug, reload));
 };
 
@@ -289,7 +291,7 @@ export const build = gulp.series(
   gulp.parallel(
     images,
     styles,
-    // scripts,
+    scripts,
     pug,
   ),
 );
@@ -301,7 +303,7 @@ export default gulp.series(
   gulp.parallel(
     images,
     styles,
-    // scripts,
+    scripts,
     pug,
   ),
   gulp.series(
