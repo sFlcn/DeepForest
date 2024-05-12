@@ -1,5 +1,31 @@
 $mobile-image-size: 239px;
 
+.albums-main {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 276px;
+    height: 95px;
+    top: 17px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    background: no-repeat url("../img/heading-backlight-m.jpg");
+    animation: 3s linear infinite apparition;
+  
+    @media (min-width: $small-desktop-width) {
+      width: 969px;
+      height: 333px;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-image: url("../img/heading-backlight-d2.jpg");
+    }
+  }
+}
+
 #albums,
 #singlesmixes,
 #etcalbums {
@@ -10,15 +36,21 @@ $mobile-image-size: 239px;
   }
 }
 
-.albums,
-.singlesmixes,
-.etcalbums {
+.albums-section {
   position: relative;
   padding-top: 25px;
   overflow: hidden;
 
   @media (min-width: $small-desktop-width) {
     padding-top: 50px;
+  }
+  
+  &:last-of-type {
+    margin-bottom: 50px;
+
+    @media (min-width: $small-desktop-width) {
+      margin-bottom: 150px;
+    }
   }
 }
 
@@ -33,55 +65,65 @@ $mobile-image-size: 239px;
   }
 }
 
-.albums::before,
-.singlesmixes::before,
-.etcalbums::before {
-  content: "";
-  position: absolute;
-  width: 276px;
-  height: 95px;
-  top: 17px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: -1;
-  background: no-repeat url("../img/heading-backlight-m.jpg");
-  animation: 3s linear infinite apparition;
-
-  @media (min-width: $small-desktop-width) {
-    width: 969px;
-    height: 333px;
-    top: 44px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-image: url("../img/heading-backlight-d.jpg");
-  }
-}
-
-.albums__heading,
-.singlesmixes__heading,
-.etcalbums__heading {
-  margin: 0 20px 50px;
-  padding: 15px;
+.albums-heading {
+  display: flex;
+  margin: 0;
   letter-spacing: 0.48px;
   border: {
-    style: solid none;
+    style: none none solid;
     color: $palette-dim;
     width: 0.5px;
   }
 
   text-transform: uppercase;
   text-align: center;
-  cursor: default;
 
   @include font-primary(24px);
 
   @media (min-width: $tablet-width) {
-    margin: 0 12.5% 50px;
+    margin: 0 12.5%;
+    text-align: left;
   }
 
   @media (min-width: $small-desktop-width) {
-    padding: 47px;
-    margin: 0 0 150px;
+    margin: 0;
+  }
+
+  &::after {
+    content: " ";
+    display: inline-block;
+    width: 15px;
+    height: 9px;
+    margin: auto;
+    background: transparent no-repeat url("../img/accordion-arrow.svg");
+    transition: transform 0.7s ease-out;
+    cursor: pointer;
+  }
+}
+
+.albums-heading__button {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px;
+
+  @media (min-width: $small-desktop-width) {
+    padding: 47px 50px 47px 456px;
+  }
+
+  @media (min-width: $desktop-width) {
+    padding-left: 483px;
+  }
+}
+
+.albums-heading--m {
+  @media (min-width: $tablet-width) {
+    display: none;
+  }
+}
+
+.albums-heading--d {
+  @media (max-width: ($tablet-width - 1)) {
+    display: none;
   }
 }
 
@@ -97,6 +139,7 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 30px;
+  padding-top: 60px;
 
   @media (min-width: $tablet-width) {
     margin-left: 12.5%;
@@ -137,7 +180,7 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
 
 .singlesmixes .album {
   margin: 0 0 45px;
-  padding-top: 74.5px;
+  // padding-top: 74.5px;
   border-top: 0.5px solid $palette-dim;
 
   @media (min-width: $small-desktop-width) {
@@ -147,7 +190,7 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
 
 .etcalbums .album {
   margin: 0 0 45px;
-  padding-top: 74.5px;
+  // padding-top: 74.5px;
   border-top: 0.5px solid $palette-dim;
 
   @media (min-width: $tablet-width) {
@@ -173,19 +216,16 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
 }
 
 .singlesmixes .album:nth-of-type(1) {
-  padding-top: 0;
   border-top-color: transparent;
 }
 
 .singlesmixes .album:nth-of-type(2) {
   @media (max-width: ($small-desktop-width - 1)) {
-    padding-top: 0;
     border-top-color: transparent;
   }
 }
 
 .etcalbums .album:nth-of-type(1) {
-  padding-top: 0;
   border-top-color: transparent;
 }
 
@@ -284,6 +324,12 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
 .etcalbums .album ol {
   @media (max-width: ($small-desktop-width - 1)) {
     margin: 0 0 40px calc((100% - $mobile-image-size) / 2 - 5px);
+  }
+}
+
+.etcalbums .album--short ol {
+  @media (max-width: ($small-desktop-width - 1)) {
+    margin: 0 0 40px calc((100% - 150px) / 2 - 5px);
   }
 }
 

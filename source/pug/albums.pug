@@ -14,22 +14,27 @@ mixin albumArticle(albumData, cssClass)
             span.visuallyhidden= `слушать на Яндекс музыке — "${albumData.title}"`
 
 block main
-  main.main
-    #albums
-      section.albums
-        .wrapper--ext.albums__container
-          h1.albums__heading Альбомы
+  main.main.albums-main
+    section.albums-section.albums.accordion-box#albums
+      .wrapper
+        h1.albums__heading.albums-heading.accordion-btnbox
+          button.button.albums-heading__button.accordion-button(type="button") Альбомы
+      .wrapper--ext.albums__container.accordion-content
           each item in albumsList
             +albumArticle(item)
-    #singlesmixes
-      section.singlesmixes
-        .wrapper--ext.albums__container
-          h1.singlesmixes__heading Синглы, ремиксы, концертные записи
+    section.albums-section.singlesmixes.accordion-box#singlesmixes
+      .wrapper
+        h1.singlesmixes__heading.albums-heading.accordion-btnbox
+          button.button.albums-heading__button.accordion-button(type="button")
+            span.albums-heading--m Синглы и ремиксы
+            span.albums-heading--d Cинглы, ремиксы, концертные записи
+      .wrapper--ext.albums__container.accordion-content
           each item in singlesnMixesList
             +albumArticle(item, "album--short")
-    #etcalbums
-      section.etcalbums
-        .wrapper--ext.albums__container
-          h1.etcalbums__heading Альбомы, косвенно относящиеся к группе
+    section.albums-section.etcalbums.accordion-box#etcalbums
+      .wrapper
+        h1.etcalbums__heading.albums-heading.accordion-btnbox
+          button.button.albums-heading__button.accordion-button(type="button") Другие альбомы
+      .wrapper--ext.albums__container.accordion-content
           each item in etcAlbumsList
             +albumArticle(item, `${item.cssClassMod ? `album${item.cssClassMod}` : `album--short` }`)
