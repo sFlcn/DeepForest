@@ -180,7 +180,6 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
 
 .singlesmixes .album {
   margin: 0 0 45px;
-  // padding-top: 74.5px;
   border-top: 0.5px solid $palette-dim;
 
   @media (min-width: $small-desktop-width) {
@@ -190,7 +189,6 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
 
 .etcalbums .album {
   margin: 0 0 45px;
-  // padding-top: 74.5px;
   border-top: 0.5px solid $palette-dim;
 
   @media (min-width: $tablet-width) {
