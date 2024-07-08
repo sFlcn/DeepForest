@@ -10,6 +10,7 @@
 .header__slider {
   position: absolute;
   width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -20,6 +21,7 @@
   height: 114px;
   top: 137px;
   background: linear-gradient(358deg, $palette-back 15%, rgba($palette-back, 0%) 50%);
+  z-index: 10;
 
   @media (min-width: $small-desktop-width) {
     height: 441px;
@@ -29,6 +31,11 @@
 
 .header__slide {
   line-height: 0;
+}
+
+.header__slide-canvas {
+  position: absolute;
+  z-index: 1;
 }
 
 .header__slide img {
@@ -146,6 +153,7 @@
   background: url("../img/deep-forest-mainlogo.svg");
   background-size: contain;
   background-repeat: no-repeat;
+  z-index: 5;
 
   @media (min-width: $small-desktop-width) {
     width: 820px;

@@ -6,6 +6,8 @@
     //- PAGES.video,
   ];
 
+  const slidesAmount = 4;
+
 mixin logoLinkHeader(link)
   if (link)
     a.header__logo(href= link)
@@ -26,10 +28,13 @@ mixin siteNavItem({ name, pageHref, anchor }, mode, index)
 
 header.header
   .header__slider
-    .header__slide
-      +pictureAdaptiveJpgWebpShort({filename: "slide-1", altText: "фоновое изображение"})
-  .wrapper--ext
     //- слайдер
+    canvas.header__slide-canvas#header__slide-canvas
+    - let sliderCounter = 1;
+    while sliderCounter <= slidesAmount
+      .header__slide
+        +picture1jpgShort({cssClass: `header__slide-${sliderCounter}`, filename: `slide-c${sliderCounter++}`, altText: "фоновое изображение"})
+  .wrapper--ext
     nav.header__nav
       .header__logo-block
         +logoLinkHeader(logoHref)
