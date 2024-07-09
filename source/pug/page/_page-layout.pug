@@ -8,7 +8,7 @@ block variables
     const pTitle = pageTitle ? pageTitle : pDescription;
 
 doctype html
-html.page(lang="ru", dir="ltr")
+html.page(lang="ru", dir="ltr", prefix="og: https://ogp.me/ns#")
   head
     block head
       meta(charset="utf-8")
@@ -18,6 +18,7 @@ html.page(lang="ru", dir="ltr")
       link(rel="stylesheet", href="./css/style-min.css")
       link(rel="preload", as="font", type="font/woff2", href="./fonts/evolventa-regular.woff2", crossorigin)
       include _favicons.pug
+      include _og.pug
 
   body.page__body
 

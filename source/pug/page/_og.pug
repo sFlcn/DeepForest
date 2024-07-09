@@ -1,0 +1,20 @@
+-
+  const OG = {
+    title: ogTitle ? ogTitle : "DeepForestMusic",
+    description: ogDiscr ? ogDiscr : pDescription,
+    imageName: "http://deepforestmusic.ru/img/df-og.jpg",
+  }
+
+meta(property="og:title", content=OG.title)
+meta(property="og:type", content="website")
+meta(property="og:description", content=OG.description)
+meta(property="og:image", content=OG.imageName)
+//- meta(property="og:site_name", content="deepforestmusic.ru")
+meta(property="og:url", content="http://deepforestmusic.ru/")
+meta(property="og:locale", content="ru")
+meta(name="twitter:card", content="summary_large_image")
+meta(property="twitter:domain", content="deepforestmusic.ru")
+meta(property="twitter:url", content="http://deepforestmusic.ru/")
+meta(name="twitter:title", content=OG.title)
+meta(name="twitter:description", content=OG.description)
+meta(name="twitter:image", content=OG.imageName)
