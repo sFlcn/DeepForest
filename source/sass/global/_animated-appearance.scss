@@ -1,0 +1,13 @@
+.animated-appearance {
+  transition: transform 1.1s ease, opacity 1.3s ease;
+
+  &--hidden {
+    transform: translate(0, 60px);
+    opacity: 0;
+  }
+
+  &--shown {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}

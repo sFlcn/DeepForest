@@ -32,7 +32,7 @@ block main
               if item.heading
                 h2.visuallyhidden= item.heading
               if item.text
-                p(class= item.class)= item.text
+                p.animated-appearance(class= item.class)= item.text
               if item.image
                 .history__image(class= item.class)
                   +pictureAdaptiveJpgWebp({filename: item.image, altText: item.altText})
