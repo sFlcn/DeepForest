@@ -364,4 +364,9 @@
     order: -1;
     margin-bottom: 55px;
   }
+
+  & p em {
+    font-style: italic;
+    color: $palette-dim;
+  }
 }
