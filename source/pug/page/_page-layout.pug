@@ -4,8 +4,8 @@ include ../global/_global-mixins.pug
 block variables
   -
     let logoHref = currentPage === "index" ? false : "./index.html";
-    const pDescription = pageDescription ? pageDescription : "Deep Forest music fansite";
-    const pTitle = pageTitle ? pageTitle : "Deep Forest music fansite";
+    const pDescription = pageDescription ? pageDescription : "Deep Forest: история группы, альбомы, тексты песен";
+    const pTitle = pageTitle ? pageTitle : pDescription;
 
 doctype html
 html.page(lang="ru", dir="ltr")

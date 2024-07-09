@@ -3,6 +3,7 @@ extends page/_page-layout.pug
 block prepend variables
   - const currentPage = PAGES["albums"].pageHref;
   - const pageTitle = "Альбомы Deep Forest";
+  - const pageDescription = "Альбомы группы Deep Forest, синглы, ремиксы, концертные записи и другие";
 
 mixin albumArticle(albumData, cssClass)
   article.albums__album.album(class=cssClass) !{albumData.markup}
