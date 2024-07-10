@@ -34,5 +34,5 @@ block main
               if item.text
                 p.animated-appearance(class= item.class)= item.text
               if item.image
-                .history__image(class= item.class)
+                .history__image.animated-appearance(class= item.class)
                   +pictureAdaptiveJpgWebp({filename: item.image, altText: item.altText})

@@ -1,4 +1,4 @@
-export default function startSinuslider({canvasEl, imagesArr, slice = 2, speed = 0.05, amplitude = 20, intens = 7, sliderTimer = 3000}) {
+export default function startSinuslider({canvasEl, imagesArr, slice = 2, speed = 0.05, amplitude = 20, intens = 7, sliderTimer = 3500}) {
   const ctx = canvasEl.getContext('2d');
   const canvasWidth = canvasEl.width;
   const canvasHeight = canvasEl.height;
@@ -22,7 +22,7 @@ export default function startSinuslider({canvasEl, imagesArr, slice = 2, speed =
 
   let timer = 0;
   let alpha = 0;
-  const alphaIncrement = sliderTimer / 1000000;
+  const alphaIncrement = sliderTimer / 4000000;
   let currentSlide = 0;
   let slideIsChanging = false;
 
@@ -34,7 +34,7 @@ export default function startSinuslider({canvasEl, imagesArr, slice = 2, speed =
         currentSlide = nextImage(currentSlide);
         setSliderTimer();
       },
-      sliderTimer / 2
+      (sliderTimer / 2 + 2)
     );
   }
 
