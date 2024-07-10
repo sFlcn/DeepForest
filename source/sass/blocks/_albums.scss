@@ -259,7 +259,8 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
   @media (max-width: ($small-desktop-width - 1)) {
     display: flex;
     flex-flow: column;
-    margin-bottom: 30px;
+    min-height: 65px;
+    margin-bottom: 10px;
     margin-left: calc((100% - 150px) / 2);
     text-align: start;
     font-size: 24px;
@@ -360,19 +361,20 @@ $alb-dfr: calc(($desktop-content - $alb-dgap * 2) / 3);
   }
 }
 
-.album.album--short p {
-  @media (max-width: ($small-desktop-width - 1)) {
-    margin: 0 0 30px calc((100% - 150px) / 2 - 8px);
-  }
-}
-
 .etcalbums .album p {
   @media (max-width: ($small-desktop-width - 1)) {
-    margin: 0 20px 40px;
+    margin: 0 18% 40px;
   }
 
   @media (min-width: $desktop-width) {
     max-width: 328px;
+  }
+}
+
+.album.album--short p,
+.etcalbums.album--short p {
+  @media (max-width: ($small-desktop-width - 1)) {
+    margin: 0 0 30px calc((100% - 150px) / 2 - 8px);
   }
 }
 
