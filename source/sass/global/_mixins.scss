@@ -46,7 +46,7 @@
   &::before {
     content: "";
     position: absolute;
-    z-index: -1;
+    z-index: -5;
     width: #{$size-m}px;
     height: #{$size-m}px;
     background: no-repeat url("../img/#{$filename}.png");

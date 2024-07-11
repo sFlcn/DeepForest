@@ -109,6 +109,7 @@ $dfr-part: $dfr - 256px;
 .history__image {
   margin: 0 auto 40px;
   max-width: max-content;
+  z-index: -1;
 
   @media (min-width: $small-desktop-width) {
     margin: 0 0 50px;
