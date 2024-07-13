@@ -28,7 +28,7 @@ mixin footerNavItem({ name, pageHref, anchor, isAlwaysActive, secondary })
 
 mixin socialLinkItem({ name, lClass, href, iconSize })
   li
-    a.socials__link(href= ( href ? href : "#" ), target="_blank", rel="noopener", onclick = ( href ? null : "return false" ))
+    a.socials__link(id= `#slink-${lClass}`, href= ( href ? href : "#" ), target="_blank", rel="noopener", onclick = ( href ? null : "return false" ))
       svg.footer__social-icon(width=`${iconSize[0]}`, height=`${iconSize[1]}`, role="img", aria-label=`${name}`, focusable="false")
         use(href=`./img/sprite.svg#${lClass}`)
 
