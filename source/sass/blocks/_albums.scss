@@ -38,18 +38,21 @@ $mobile-image-size: 239px;
 
 .albums-section {
   position: relative;
-  padding-top: 25px;
   overflow: hidden;
-
-  @media (min-width: $small-desktop-width) {
-    padding-top: 50px;
-  }
   
   &:last-of-type {
     margin-bottom: 50px;
 
     @media (min-width: $small-desktop-width) {
       margin-bottom: 150px;
+    }
+  }
+
+  &:first-of-type {
+    padding-top: 25px;
+
+    @media (min-width: $small-desktop-width) {
+      padding-top: 50px;
     }
   }
 }
@@ -66,7 +69,7 @@ $mobile-image-size: 239px;
 }
 
 .albums-heading {
-  display: flex;
+  position: relative;
   margin: 0;
   letter-spacing: 0.48px;
   border: {
@@ -91,10 +94,12 @@ $mobile-image-size: 239px;
 
   &::after {
     content: " ";
-    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 0;
     width: 15px;
     height: 9px;
-    margin: auto;
+    z-index: -1;
     background: transparent no-repeat url("../img/accordion-arrow.svg");
     transition: transform 0.7s ease-out;
     cursor: pointer;
