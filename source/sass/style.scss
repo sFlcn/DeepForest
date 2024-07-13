@@ -4,12 +4,12 @@
 @import "global/variables";
 @import "global/mixins";
 @import "global/global";
-@import "global/animated-appearance";
 
 // Blocks
 @import "page/page";
 @import "blocks/socials";
 @import "blocks/accordion";
+@import "blocks/animated-appearance";
 
 // header
 @import "page/page-header";
