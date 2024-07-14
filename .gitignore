@@ -2,6 +2,8 @@ node_modules/
 build/
 tmp/
 
+_yandexmetrika.pug
+
 .DS_Store
 ._*
 .idea

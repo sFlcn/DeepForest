@@ -57,6 +57,12 @@ const paths = {
     src: 'source/assets/favicon/*',
     dest: 'build/',
   },
+  layoutAddons: {
+    yandexmetricaTrueTemplate: 'source/pug/yandex/_metrika-true.pug',
+    yandexmetricaNullTemplate: 'source/pug/yandex/_metrika-dummy.pug',
+    yandexmetricaTarget: '_yandexmetrika.pug',
+    targetPosition: 'source/pug/yandex/',
+  },
 };
 
 // ↓ External data collect ------------------------------------------------------------------ ↓
@@ -109,6 +115,20 @@ const getData = () => {
 // ↑ ---------------------------------------------------------------------------------------- ↑
 
 const cleanDirs = async () => { await deleteAsync(['build']); };
+
+const embedLayoutAddons = (done) => {
+  gulp.src(paths.layoutAddons.yandexmetricaTrueTemplate)
+    .pipe(rename(paths.layoutAddons.yandexmetricaTarget))
+    .pipe(gulp.dest(paths.layoutAddons.targetPosition));
+  done();
+};
+
+const withoutLayoutAddons = (done) => {
+  gulp.src(paths.layoutAddons.yandexmetricaNullTemplate)
+    .pipe(rename(paths.layoutAddons.yandexmetricaTarget))
+    .pipe(gulp.dest(paths.layoutAddons.targetPosition));
+  done();
+};
 
 const pug = (done) => {
   gulp.src(paths.pug.src)
@@ -288,6 +308,7 @@ const server = (done) => {
 export const build = gulp.series(
   cleanDirs,
   copyResources,
+  embedLayoutAddons,
   gulp.parallel(
     images,
     styles,
@@ -300,6 +321,7 @@ export const build = gulp.series(
 export default gulp.series(
   cleanDirs,
   copyResources,
+  withoutLayoutAddons,
   gulp.parallel(
     images,
     styles,
